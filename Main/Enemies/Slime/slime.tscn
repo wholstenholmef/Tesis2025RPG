@@ -1,0 +1,28 @@
+[gd_scene load_steps=8 format=3 uid="uid://ll45c7ko3sjd"]
+
+[ext_resource type="PackedScene" uid="uid://1jwapdqwx5v6" path="res://Main/Enemies/EnemyBase.tscn" id="1_66wnl"]
+[ext_resource type="Script" path="res://Main/Enemies/Slime/slime.gd" id="2_ai8t8"]
+[ext_resource type="SpriteFrames" uid="uid://dajbiyiwo5a8r" path="res://Main/Enemies/Slime/slime_animations.tres" id="2_rwd4i"]
+[ext_resource type="Resource" uid="uid://br37ajajiiemw" path="res://Main/Enemies/Slime/slime_sheet.tres" id="3_d5bog"]
+[ext_resource type="Shader" path="res://shaders/flash.gdshader" id="4_1koal"]
+[ext_resource type="Texture2D" uid="uid://dj4uqx2dtjgrb" path="res://Assets/Enemies/slime_sheet.png" id="5_dqyps"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kiqnt"]
+render_priority = 0
+shader = ExtResource("4_1koal")
+shader_parameter/active = false
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/y_billboard = true
+shader_parameter/tex = ExtResource("5_dqyps")
+
+[node name="Slime" instance=ExtResource("1_66wnl")]
+script = ExtResource("2_ai8t8")
+stats = ExtResource("3_d5bog")
+
+[node name="AnimatedSprite3D" parent="." index="1"]
+material_override = SubResource("ShaderMaterial_kiqnt")
+offset = Vector2(0, 16)
+billboard = 2
+sprite_frames = ExtResource("2_rwd4i")
+animation = &"idle"
+frame_progress = 0.949936

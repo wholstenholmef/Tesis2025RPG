@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://dgrl4roljpcut"]
+
+[sub_resource type="Animation" id="Animation_1t3sw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionalLight3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.81476, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_aajb7"]
+resource_name = "loop"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DirectionalLight3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(6.28319, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2lh0q"]
+_data = {
+"RESET": SubResource("Animation_1t3sw"),
+"loop": SubResource("Animation_aajb7")
+}
+
+[sub_resource type="Gradient" id="Gradient_4raer"]
+colors = PackedColorArray(0.0784314, 0.203922, 0.392157, 1, 0, 0, 0.0196078, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b40n4"]
+gradient = SubResource("Gradient_4raer")
+fill_from = Vector2(0, 0.569853)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_5r8us"]
+turbidity = 177.78
+sun_disk_scale = 0.0
+ground_color = Color(1, 1, 1, 1)
+use_debanding = false
+night_sky = SubResource("GradientTexture2D_b40n4")
+
+[sub_resource type="Sky" id="Sky_vi0m8"]
+sky_material = SubResource("PhysicalSkyMaterial_5r8us")
+radiance_size = 0
+
+[sub_resource type="Environment" id="Environment_8enx2"]
+background_mode = 2
+sky = SubResource("Sky_vi0m8")
+ambient_light_color = Color(1, 1, 1, 1)
+adjustment_brightness = 1.5
+
+[node name="Node3D" type="Node3D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2lh0q")
+}
+autoplay = "loop"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8enx2")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.241551, -0.970389, 0, 0.970389, -0.241551, 0, 0, 0)

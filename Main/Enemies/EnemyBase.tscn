@@ -1,0 +1,86 @@
+[gd_scene load_steps=7 format=3 uid="uid://1jwapdqwx5v6"]
+
+[ext_resource type="Script" path="res://Main/Enemies/enemy_base.gd" id="1_wrjpg"]
+[ext_resource type="Shader" path="res://shaders/flash.gdshader" id="2_nhdif"]
+
+[sub_resource type="Animation" id="Animation_ojlka"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:offset:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite3D:material_override:shader_parameter/active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_tlhu2"]
+resource_name = "hit"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:offset:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [-6.0, 6.0, -5.0, 5.0, -3.0, 3.0, 1.0, -1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite3D:material_override:shader_parameter/active")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pugf5"]
+_data = {
+"RESET": SubResource("Animation_ojlka"),
+"hit": SubResource("Animation_tlhu2")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qan1l"]
+render_priority = 0
+shader = ExtResource("2_nhdif")
+shader_parameter/active = false
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/y_billboard = false
+
+[node name="enemyBase" type="Node3D"]
+script = ExtResource("1_wrjpg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pugf5")
+}
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+material_override = SubResource("ShaderMaterial_qan1l")
+pixel_size = 0.02
+texture_filter = 0

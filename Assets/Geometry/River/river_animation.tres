@@ -1,0 +1,38 @@
+[gd_resource type="AnimatedTexture" load_steps=12 format=3 uid="uid://xnf8d7vpg0xx"]
+
+[ext_resource type="Texture2D" uid="uid://m40hm74gaxgy" path="res://Assets/Geometry/River/river1.png" id="1_e4fni"]
+[ext_resource type="Texture2D" uid="uid://c3e2nrcw0pthu" path="res://Assets/Geometry/River/river2.png" id="2_eq4gk"]
+[ext_resource type="Texture2D" uid="uid://cryhsdbj4gent" path="res://Assets/Geometry/River/river11.png" id="3_nwoy7"]
+[ext_resource type="Texture2D" uid="uid://buvgqtfwxjanm" path="res://Assets/Geometry/River/river3.png" id="4_5nf1i"]
+[ext_resource type="Texture2D" uid="uid://tnjig318vcul" path="res://Assets/Geometry/River/river4.png" id="5_7psa6"]
+[ext_resource type="Texture2D" uid="uid://cnd4fvea1b08" path="res://Assets/Geometry/River/river5.png" id="6_rqo6r"]
+[ext_resource type="Texture2D" uid="uid://c5nha31npa8my" path="res://Assets/Geometry/River/river6.png" id="7_g44pp"]
+[ext_resource type="Texture2D" uid="uid://186fhvs1oy3s" path="res://Assets/Geometry/River/river7.png" id="8_resdt"]
+[ext_resource type="Texture2D" uid="uid://ctbfna6jof58j" path="res://Assets/Geometry/River/river8.png" id="9_v2dvs"]
+[ext_resource type="Texture2D" uid="uid://dq8totl20id1a" path="res://Assets/Geometry/River/river9.png" id="10_m22vq"]
+[ext_resource type="Texture2D" uid="uid://bn32ijtqrtyog" path="res://Assets/Geometry/River/river10.png" id="11_x7ch1"]
+
+[resource]
+frames = 11
+frame_0/texture = ExtResource("1_e4fni")
+frame_0/duration = 0.1
+frame_1/texture = ExtResource("2_eq4gk")
+frame_1/duration = 0.1
+frame_2/texture = ExtResource("4_5nf1i")
+frame_2/duration = 0.1
+frame_3/texture = ExtResource("5_7psa6")
+frame_3/duration = 0.1
+frame_4/texture = ExtResource("6_rqo6r")
+frame_4/duration = 0.1
+frame_5/texture = ExtResource("7_g44pp")
+frame_5/duration = 0.1
+frame_6/texture = ExtResource("8_resdt")
+frame_6/duration = 0.1
+frame_7/texture = ExtResource("9_v2dvs")
+frame_7/duration = 0.1
+frame_8/texture = ExtResource("10_m22vq")
+frame_8/duration = 0.1
+frame_9/texture = ExtResource("11_x7ch1")
+frame_9/duration = 0.1
+frame_10/texture = ExtResource("3_nwoy7")
+frame_10/duration = 0.1
