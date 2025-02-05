@@ -34,7 +34,6 @@ size = Vector2(4, 4)
 
 [node name="World" type="Node"]
 script = ExtResource("1_yw74k")
-random_encounter_ratio = 50
 
 [node name="Combat" type="Node" parent="."]
 
