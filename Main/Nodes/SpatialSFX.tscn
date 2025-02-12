@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dpmd3eb0pbru4"]
+
+[node name="SpatialSfx" type="AudioStreamPlayer3D"]
+autoplay = true
+max_distance = 3.0

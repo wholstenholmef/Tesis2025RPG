@@ -2,34 +2,30 @@ extends Node3D
 
 var player_tweener : Tween = null
 var camera_tweener : Tween = null
+var item_tweener : Tween = null
 
 var current_health : int
 var current_experience : int = 0
 var exp_to_next_level : int = 1
 var current_level := 1
 var max_actions : int
+var equipped_node
 
 signal movement
 signal attacked
 signal turn_finished
 signal leveling_up
+signal item_unequiped
+signal item_equiped
 
 @export var stats : stat_sheet
-
-var stone_footsteps_path = "res://Assets/SFX/Footsteps/Stone_footsteps/footstep"
-var river_footsteps_path = "res://Assets/SFX/Footsteps/River_footsteps/footstep"
-var sword_slashes_path = "res://Assets/SFX/SwordSlashes/swoosh"
-var stone_footsteps_SFX = []
-var river_footsteps_SFX = []
-var sword_slashes_SFX = []
-var sfx_suffix = ".wav"
-
 var state
 enum MACHINE {
 	IN_COMBAT,
 	IDLE,
 	TURNING,
 	MOVING,
+	PLAYING_MUSIC,
 	ATTACKING
 }
 
@@ -39,9 +35,19 @@ enum C_MACHINE {
 	READY
 }
 
+var stone_footsteps_path = "res://Assets/SFX/Footsteps/Stone_footsteps/footstep"
+var river_footsteps_path = "res://Assets/SFX/Footsteps/River_footsteps/footstep"
+var sword_slashes_path = "res://Assets/SFX/SwordSlashes/swoosh"
+var stone_footsteps_SFX = []
+var river_footsteps_SFX = []
+var sword_slashes_SFX = []
+var sfx_suffix = ".wav"
+
+
 func _ready() -> void:
 	state = MACHINE.IDLE
 	current_health = stats.max_health
+	equip($weaponSprite)
 	load_SFX()
 
 func load_SFX() -> void:
@@ -54,7 +60,6 @@ func load_SFX() -> void:
 	for i in range(1, 4):
 		var sfx_load = load(sword_slashes_path + str(i) + sfx_suffix)
 		sword_slashes_SFX.append(sfx_load)
-
 
 func _physics_process(delta: float) -> void:
 	get_input()
@@ -78,6 +83,38 @@ func get_input() -> void:
 				if Input.is_action_just_pressed("attack"):
 					basic_attack()
 					attacked.emit(stats.power)
+
+func unequip(node) -> void:
+	if item_tweener:
+		item_tweener.kill()
+	item_tweener = create_tween().set_parallel()
+	item_tweener.tween_property(node, "position:y", -1, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD).as_relative()
+	item_tweener.tween_property(node, "modulate:a", 0, 0.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	await item_tweener.finished
+	node.hide()
+	item_unequiped.emit()
+
+func equip(node) -> void:
+	if equipped_node:
+		unequip(equipped_node)
+
+	var item_y_position : float = 0
+	if node == $weaponSprite:
+		item_y_position = -0.02
+	elif node == $FluteSprite:
+		item_y_position = -0.1
+	
+	node.show()
+	node.position.y = -0.3
+	node.modulate.a = 0
+	
+	if item_tweener:
+		item_tweener.kill()
+	item_tweener = create_tween().set_parallel()
+	item_tweener.tween_property(node, "position:y", item_y_position, 0.5).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+	item_tweener.tween_property(node, "modulate:a", 1, 0.5).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+	await item_tweener.finished
+	item_equiped.emit()
 
 func move(move_dir : Vector3) -> void:
 	#Will not move if its not idle
@@ -117,12 +154,14 @@ func move(move_dir : Vector3) -> void:
 	player_tweener.tween_property(self, "global_transform:origin", global_transform.basis * (move_dir*2), 0.5).as_relative()
 	await player_tweener.finished
 	
-	if tile:
-		play_landing_sfx(tile)
-	
 	state = MACHINE.IDLE
 	movement.emit()
 
+#func play_footsteps_set(tile) -> void:
+	#for i in 2:
+		#play_footstep_sfx(tile)
+		#await get_tree().create_timer(0.5).timeout
+ 
 func play_footstep_sfx(tile) -> void:
 	#Tile IDS!
 	#1: Stone floor
@@ -142,11 +181,6 @@ func play_footstep_sfx(tile) -> void:
 		break
 	$stepSFX.pitch_scale = randf_range(0.8, 1.2)
 	$stepSFX.play()
-
-func play_landing_sfx(tile) -> void:
-	match tile:
-		2:
-			pass
 
 func turn(look_dir : Vector2) -> void:
 	if state != MACHINE.IDLE:

@@ -22,6 +22,44 @@ enum MACHINE {
 
 @onready var warrior = %Warrior
 
+var SFX_node = preload("res://Main/Nodes/SpatialSFX.tscn")
+
+var river_audio_file :String = "res://Assets/SFX/River/calm_river.wav"
+var river_audio_stream : AudioStreamWAV
+
+var door_node = preload("res://Main/musicDoor/door.tscn")
+
+func _ready() -> void:
+	update_HUD()
+	generate_river_SFX()
+	generate_gridmap_scenes()
+
+func generate_river_SFX() -> void:
+	var geo_grid_map : GridMap = get_node_or_null("%GeometryGridMap")
+	if geo_grid_map == null:
+		return
+	river_audio_stream = load(river_audio_file)
+	for tile in geo_grid_map.get_used_cells_by_item(2):
+		var SFX_instance = SFX_node.instantiate()
+		SFX_instance.stream = river_audio_stream
+		SFX_instance.position = geo_grid_map.map_to_local(tile)
+		%VFXNodes.add_child(SFX_instance)
+		#geo_grid_map.set_cell_item(tile, -1)
+	#var local_position = geo_grid_map.local_to_map(geo_grid_map.to_local(self.global_position))
+	#tile = geo_grid_map.get_cell_item(local_position)
+
+func generate_gridmap_scenes() -> void:
+	var scenes_grid_map : GridMap = get_node_or_null("%ScenesGridMap")
+	if scenes_grid_map == null:
+		return
+	
+	#Door creation
+	for tile in scenes_grid_map.get_used_cells_by_item(0):
+		var door_instance = door_node.instantiate()
+		$"%SubViewport".call_deferred("add_child", door_instance)
+		door_instance.position = scenes_grid_map.map_to_local(tile)
+		scenes_grid_map.set_cell_item(tile, -1)
+
 func _on_warrior_movement() -> void:
 	change_hour()
 	random_enemy_encounter()

@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buvgqtfwxjanm"
-path.s3tc="res://.godot/imported/river3.png-7abfbe746491da10f2025ebffe314e99.s3tc.ctex"
+uid="uid://kwlruc3x72o0"
+path="res://.godot/imported/panflute.png-b4f03362071f1e5b355e9843634c991d.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Geometry/River/river3.png"
-dest_files=["res://.godot/imported/river3.png-7abfbe746491da10f2025ebffe314e99.s3tc.ctex"]
+source_file="res://Assets/Player/panflute.png"
+dest_files=["res://.godot/imported/panflute.png-b4f03362071f1e5b355e9843634c991d.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

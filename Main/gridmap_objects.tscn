@@ -80,6 +80,7 @@ shape = SubResource("BoxShape3D_sgrl1")
 
 [node name="stoneFloorMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+visible = false
 mesh = SubResource("PlaneMesh_2j10x")
 surface_material_override/0 = SubResource("StandardMaterial3D_w2wak")
 
@@ -90,6 +91,7 @@ shape = SubResource("ConvexPolygonShape3D_fr5w3")
 
 [node name="riverFloorMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+visible = false
 mesh = SubResource("PlaneMesh_625to")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="riverFloorMesh"]

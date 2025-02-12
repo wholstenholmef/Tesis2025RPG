@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dxjg3fww3e167"]
+[gd_scene load_steps=13 format=3 uid="uid://dxjg3fww3e167"]
 
 [ext_resource type="Script" path="res://Main/musicDoor/door.gd" id="1_88hds"]
 [ext_resource type="PackedScene" uid="uid://psjlt8orfel8" path="res://Assets/Geometry/brickWall/wall_brick.glb" id="2_86j2r"]
@@ -57,6 +57,8 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_70o8c"]
 resource_name = "open"
+length = 1.5
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -64,10 +66,10 @@ tracks/0/path = NodePath("DoorR:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(4.59479, 1),
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(0.5, 2, 1),
 "update": 0,
-"values": [1.0, 2.0]
+"values": [1.0, 1.3, 2.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -76,10 +78,10 @@ tracks/1/path = NodePath("DoorL:position:x")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(4.59479, 1),
+"times": PackedFloat32Array(0, 0.3, 1),
+"transitions": PackedFloat32Array(0.5, 2, 1),
 "update": 0,
-"values": [-1.0, -2.0]
+"values": [-1.0, -1.3, -2.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -138,6 +140,9 @@ point_count = 3
 offsets = PackedFloat32Array(0, 0.713333, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0.368627, 0.368627, 0.368627, 1, 0.114897, 0.114897, 0.114897, 0)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_qus6g"]
+radius = 2.5
+
 [node name="Door" type="StaticBody3D"]
 script = ExtResource("1_88hds")
 
@@ -145,6 +150,8 @@ script = ExtResource("1_88hds")
 libraries = {
 "": SubResource("AnimationLibrary_vd3yy")
 }
+
+[node name="NotePlayer" type="AudioStreamPlayer3D" parent="."]
 
 [node name="DoorR" parent="." instance=ExtResource("2_86j2r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.5, 1, 0, 0)
@@ -172,4 +179,7 @@ scale_amount_max = 1.3
 scale_amount_curve = SubResource("Curve_k37or")
 color_ramp = SubResource("Gradient_oxcx3")
 
-[node name="NotePlayer" type="AudioStreamPlayer3D" parent="."]
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_qus6g")
