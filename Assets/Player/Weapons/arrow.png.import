@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dejfjxlkxv0jx"
-path.s3tc="res://.godot/imported/explosion_sheet.png-4124cc077f8b74556b40a349a0267866.s3tc.ctex"
+uid="uid://c8j47tytjwto4"
+path="res://.godot/imported/arrow.png-81fac28a0f0c711fa988b36b6fb28f34.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Player/explosion_sheet.png"
-dest_files=["res://.godot/imported/explosion_sheet.png-4124cc077f8b74556b40a349a0267866.s3tc.ctex"]
+source_file="res://Assets/Player/Weapons/arrow.png"
+dest_files=["res://.godot/imported/arrow.png-81fac28a0f0c711fa988b36b6fb28f34.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

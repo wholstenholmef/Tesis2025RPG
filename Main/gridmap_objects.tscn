@@ -1,16 +1,16 @@
-[gd_scene load_steps=15 format=4 uid="uid://by33tx0qlgt17"]
+[gd_scene load_steps=14 format=4 uid="uid://by33tx0qlgt17"]
 
 [ext_resource type="Texture2D" uid="uid://jhlcqaaux5v5" path="res://Assets/Geometry/stone_floor.png" id="1_h2le1"]
 [ext_resource type="Texture2D" uid="uid://bie1iufyjk27h" path="res://Assets/Geometry/brickWall/wall_brick_bricks.png" id="2_xjpdp"]
 [ext_resource type="Texture2D" uid="uid://xnf8d7vpg0xx" path="res://Assets/Geometry/River/river_animation.tres" id="3_fycya"]
-[ext_resource type="AudioStream" uid="uid://htu0cn138q2i" path="res://Assets/SFX/River/calm_river.wav" id="4_l3py5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ka7x"]
 resource_name = "Material"
 cull_mode = 2
+shading_mode = 0
 albedo_texture = ExtResource("2_xjpdp")
-roughness = 0.5
-texture_filter = 2
+texture_filter = 0
+texture_repeat = false
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_0fjla"]
 _surfaces = [{
@@ -93,10 +93,6 @@ shape = SubResource("ConvexPolygonShape3D_fr5w3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 visible = false
 mesh = SubResource("PlaneMesh_625to")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="riverFloorMesh"]
-stream = ExtResource("4_l3py5")
-autoplay = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="riverFloorMesh"]
 

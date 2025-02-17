@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://jqmoy01y5k2"
-path.s3tc="res://.godot/imported/fireball_sheet.png-c0856d0b28a801c2ed5d9e7b885c77c4.s3tc.ctex"
+path.s3tc="res://.godot/imported/fireball_sheet.png-a9de1640304da20f70ab5a263a00d09a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/Player/fireball_sheet.png"
-dest_files=["res://.godot/imported/fireball_sheet.png-c0856d0b28a801c2ed5d9e7b885c77c4.s3tc.ctex"]
+source_file="res://Assets/Player/Spells/fireball_sheet.png"
+dest_files=["res://.godot/imported/fireball_sheet.png-a9de1640304da20f70ab5a263a00d09a.s3tc.ctex"]
 
 [params]
 

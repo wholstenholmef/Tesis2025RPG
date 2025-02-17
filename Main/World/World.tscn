@@ -34,6 +34,8 @@ size = Vector2(4, 4)
 
 [node name="World" type="Node"]
 script = ExtResource("1_yw74k")
+metadata/_edit_horizontal_guides_ = [0.0, 180.0, 90.0]
+metadata/_edit_vertical_guides_ = [320.0, 160.0]
 
 [node name="Combat" type="Node" parent="."]
 
@@ -43,9 +45,9 @@ offset_bottom = 180.0
 color = Color(0, 0, 0, 1)
 
 [node name="ScreenMarginContainer" type="MarginContainer" parent="."]
-offset_top = 31.0
+offset_top = 1.0
 offset_right = 172.0
-offset_bottom = 133.0
+offset_bottom = 103.0
 
 [node name="mainViewportContainer" type="SubViewportContainer" parent="ScreenMarginContainer"]
 layout_mode = 2
@@ -327,8 +329,10 @@ size = 10.0
 script = ExtResource("13_i078a")
 
 [node name="messageLogNode" parent="." instance=ExtResource("12_iesje")]
-offset_left = 172.0
-offset_top = 0.0
+offset_left = 171.0
+offset_top = 1.0
+offset_right = 319.0
+offset_bottom = 129.0
 
 [connection signal="attacked" from="ScreenMarginContainer/mainViewportContainer/SubViewport/Warrior" to="." method="_on_warrior_attacked"]
 [connection signal="leveling_up" from="ScreenMarginContainer/mainViewportContainer/SubViewport/Warrior" to="." method="_on_warrior_leveling_up"]

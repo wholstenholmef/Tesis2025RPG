@@ -6,9 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bcvpc3mr5ucjr" path="res://Assets/HUD/minimap_player_marker.png" id="2_oqutq"]
 [ext_resource type="Texture2D" uid="uid://c3wf5va4kypvg" path="res://Assets/Player/slash.png" id="4_1w6yn"]
 [ext_resource type="Texture2D" uid="uid://kwlruc3x72o0" path="res://Assets/Player/panflute.png" id="4_w30cd"]
-[ext_resource type="Texture2D" uid="uid://dejfjxlkxv0jx" path="res://Assets/Player/explosion_sheet.png" id="5_126lu"]
+[ext_resource type="Texture2D" uid="uid://dejfjxlkxv0jx" path="res://Assets/Player/Spells/explosion_sheet.png" id="5_126lu"]
 [ext_resource type="Texture2D" uid="uid://81ap28ayxs5k" path="res://Assets/Player/thunder.png" id="5_eeylw"]
-[ext_resource type="Texture2D" uid="uid://jqmoy01y5k2" path="res://Assets/Player/fireball_sheet.png" id="6_2laxy"]
+[ext_resource type="Texture2D" uid="uid://jqmoy01y5k2" path="res://Assets/Player/Spells/fireball_sheet.png" id="6_2laxy"]
 [ext_resource type="AudioStream" uid="uid://bcjaqij2h2nlu" path="res://Assets/SFX/Footsteps/River_footsteps/footstep1.wav" id="7_s3bqi"]
 
 [sub_resource type="Animation" id="Animation_n745t"]
