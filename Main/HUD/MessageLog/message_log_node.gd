@@ -3,7 +3,10 @@ extends MarginContainer
 #var msg_tweener
 
 func _ready() -> void:
-	$"%messageLog".visible_characters = 0
+	$MarginContainer/messageLog.visible_characters = 0
+	add_message("[wave] hola miguel :D [/wave] ")
+	#%messageLog.visible_characters = 0
+	pass
 
 func add_message(msg : String) -> void:
 	var previous_total_length = $"%messageLog".get_total_character_count()

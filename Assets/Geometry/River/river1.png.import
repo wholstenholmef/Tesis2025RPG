@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://m40hm74gaxgy"
 path.s3tc="res://.godot/imported/river1.png-050e6a084898c30e3e2971a08e1301ba.s3tc.ctex"
+path.etc2="res://.godot/imported/river1.png-050e6a084898c30e3e2971a08e1301ba.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Geometry/River/river1.png"
-dest_files=["res://.godot/imported/river1.png-050e6a084898c30e3e2971a08e1301ba.s3tc.ctex"]
+dest_files=["res://.godot/imported/river1.png-050e6a084898c30e3e2971a08e1301ba.s3tc.ctex", "res://.godot/imported/river1.png-050e6a084898c30e3e2971a08e1301ba.etc2.ctex"]
 
 [params]
 

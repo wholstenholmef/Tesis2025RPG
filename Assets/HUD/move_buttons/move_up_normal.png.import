@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bm8qp0hmv45nr"
-path="res://.godot/imported/player_crit_icon.png-a21f984d9562e049754e36480ed2523a.ctex"
+uid="uid://rkwkl6h2wwng"
+path="res://.godot/imported/move_up_normal.png-d0670db65d67d5351e01cf53ef35dd07.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/HUD/player_crit_icon.png"
-dest_files=["res://.godot/imported/player_crit_icon.png-a21f984d9562e049754e36480ed2523a.ctex"]
+source_file="res://Assets/HUD/move_buttons/move_up_normal.png"
+dest_files=["res://.godot/imported/move_up_normal.png-d0670db65d67d5351e01cf53ef35dd07.ctex"]
 
 [params]
 

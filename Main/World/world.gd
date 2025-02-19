@@ -21,6 +21,8 @@ enum MACHINE {
 }
 
 @onready var warrior = %Warrior
+@export_node_path("RichTextLabel") var timeLabel
+@export_node_path("RichTextLabel") var dayLabel
 
 var SFX_node = preload("res://Main/Nodes/SpatialSFX.tscn")
 
@@ -30,7 +32,7 @@ var river_audio_stream : AudioStreamWAV
 var door_node = preload("res://Main/musicDoor/door.tscn")
 
 func _ready() -> void:
-	update_HUD()
+	#update_HUD()
 	generate_river_SFX()
 	generate_gridmap_scenes()
 
@@ -62,7 +64,7 @@ func generate_gridmap_scenes() -> void:
 
 func _on_warrior_movement() -> void:
 	change_hour()
-	random_enemy_encounter()
+	#random_enemy_encounter()
 
 func set_hour(hour, minutes) -> void:
 	current_hour = hour
@@ -78,8 +80,9 @@ func change_hour() -> void:
 		current_hour = 0
 		current_minutes = 0
 		change_day()
-	%hourLabel.text = "[center] " + str(current_hour).pad_zeros(2) + ":" + str(current_minutes).pad_zeros(2)
-	pass
+	
+	if timeLabel:
+		get_node(timeLabel).text = "[center] " + str(current_hour).pad_zeros(2) + ":" + str(current_minutes).pad_zeros(2)
 
 func change_day() -> void:
 	current_day += 1
@@ -133,7 +136,7 @@ func enemy_turn() -> void:
 
 func on_enemy_attacked(enemy_name, damage) -> void:
 	warrior.hit(damage)
-	update_HUD()
+	#update_HUD()
 	
 	var log_message = "The enemy " + "[color=red]{enemy_name}[/color]" + " attacks for " + "[color=orange]{damage_count} damage[/color]"
 	log_message = log_message.format({"enemy_name": str(enemy_name), "damage_count": str(damage)})
@@ -153,11 +156,12 @@ func battle_end() -> void:
 	battle_exp = 0
 
 func _on_warrior_leveling_up() -> void:
-	update_HUD()
+	#update_HUD()
+	pass
 
-func update_HUD() -> void:
-	%lifeValueLabel.text = str(warrior.current_health)
-	%powerValueLabel.text = str(warrior.stats.power)
-	%speedValueLabel.text = str(warrior.stats.speed)
-	%critChanceLabel.text = str(warrior.stats.level) + "%"
-	%levelLabel.text = "LVL." + str(warrior.current_level).pad_zeros(2)
+#func update_HUD() -> void:
+	#%lifeValueLabel.text = str(warrior.current_health)
+	#%powerValueLabel.text = str(warrior.stats.power)
+	#%speedValueLabel.text = str(warrior.stats.speed)
+	#%critChanceLabel.text = str(warrior.stats.level) + "%"
+	#%levelLabel.text = "LVL." + str(warrior.current_level).pad_zeros(2)

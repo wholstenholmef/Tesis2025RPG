@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://br4ie36e5dyrb"
 path.s3tc="res://.godot/imported/arrow_particle.png-b53123db0196ff58f2119f98416f9752.s3tc.ctex"
+path.etc2="res://.godot/imported/arrow_particle.png-b53123db0196ff58f2119f98416f9752.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Player/Weapons/arrow_particle.png"
-dest_files=["res://.godot/imported/arrow_particle.png-b53123db0196ff58f2119f98416f9752.s3tc.ctex"]
+dest_files=["res://.godot/imported/arrow_particle.png-b53123db0196ff58f2119f98416f9752.s3tc.ctex", "res://.godot/imported/arrow_particle.png-b53123db0196ff58f2119f98416f9752.etc2.ctex"]
 
 [params]
 

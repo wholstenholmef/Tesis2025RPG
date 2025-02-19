@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bovqe57bbf3ru"
-path="res://.godot/imported/player_heart_icon.png-9345d5dbfae05099a3026ff9e173c3d5.ctex"
+uid="uid://hekdm85ovmwy"
+path="res://.godot/imported/move_down_pressed.png-1918b142ceb71104c3099c8e1c5c163f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/HUD/player_heart_icon.png"
-dest_files=["res://.godot/imported/player_heart_icon.png-9345d5dbfae05099a3026ff9e173c3d5.ctex"]
+source_file="res://Assets/HUD/move_buttons/move_down_pressed.png"
+dest_files=["res://.godot/imported/move_down_pressed.png-1918b142ceb71104c3099c8e1c5c163f.ctex"]
 
 [params]
 

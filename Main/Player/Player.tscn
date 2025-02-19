@@ -1,15 +1,17 @@
-[gd_scene load_steps=58 format=3 uid="uid://c5cweqqdwboqj"]
+[gd_scene load_steps=60 format=3 uid="uid://c5cweqqdwboqj"]
 
 [ext_resource type="Script" path="res://Main/Player/Player.gd" id="1_stk28"]
 [ext_resource type="Texture2D" uid="uid://cq7kdb0j5ukxx" path="res://Assets/Player/sword.png" id="2_072n2"]
 [ext_resource type="Resource" uid="uid://die1ya61u7uwt" path="res://Main/Player/player_base.tres" id="2_k1xcr"]
-[ext_resource type="Texture2D" uid="uid://bcvpc3mr5ucjr" path="res://Assets/HUD/minimap_player_marker.png" id="2_oqutq"]
+[ext_resource type="Texture2D" uid="uid://bcvpc3mr5ucjr" path="res://Assets/HUD/Icons/minimap_player_marker.png" id="2_oqutq"]
+[ext_resource type="Script" path="res://Main/Nodes/swipe_node/swipe_node.gd" id="3_4gjc4"]
 [ext_resource type="Texture2D" uid="uid://c3wf5va4kypvg" path="res://Assets/Player/slash.png" id="4_1w6yn"]
 [ext_resource type="Texture2D" uid="uid://kwlruc3x72o0" path="res://Assets/Player/panflute.png" id="4_w30cd"]
 [ext_resource type="Texture2D" uid="uid://dejfjxlkxv0jx" path="res://Assets/Player/Spells/explosion_sheet.png" id="5_126lu"]
 [ext_resource type="Texture2D" uid="uid://81ap28ayxs5k" path="res://Assets/Player/thunder.png" id="5_eeylw"]
 [ext_resource type="Texture2D" uid="uid://jqmoy01y5k2" path="res://Assets/Player/Spells/fireball_sheet.png" id="6_2laxy"]
 [ext_resource type="AudioStream" uid="uid://bcjaqij2h2nlu" path="res://Assets/SFX/Footsteps/River_footsteps/footstep1.wav" id="7_s3bqi"]
+[ext_resource type="PackedScene" uid="uid://base3nglmluw6" path="res://Main/Player/Weapons/bow_node.tscn" id="11_tr1pb"]
 
 [sub_resource type="Animation" id="Animation_n745t"]
 length = 0.001
@@ -84,6 +86,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Camera3D:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_kvko5"]
@@ -179,7 +193,7 @@ length = 0.45
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = true
+tracks/0/enabled = false
 tracks/0/path = NodePath("weaponSprite:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -200,6 +214,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(-0.0160787, -1.55132, 0.299778)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Camera3D:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.45),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [0.0, 0.02, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_7mrnm"]
@@ -551,7 +577,32 @@ animations = [{
 
 [node name="Warrior" type="Node3D"]
 script = ExtResource("1_stk28")
+move_speed_in_seconds = 0.5
 stats = ExtResource("2_k1xcr")
+
+[node name="swipeNode" type="Node" parent="."]
+script = ExtResource("3_4gjc4")
+length = 30
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="screenViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1000, 1000)
+render_target_update_mode = 4
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_energy = 1.5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -566,13 +617,13 @@ target_position = Vector3(0, 0, -1)
 hit_from_inside = true
 
 [node name="weaponSprite" type="Sprite3D" parent="."]
-transform = Transform3D(0.0233537, 0.00960688, -0.999681, 0.29527, 0.955279, 0.016078, 0.955129, -0.295551, 0.0194726, 0.134, -0.02, -0.171)
+transform = Transform3D(0.0233537, 0.00960688, -0.999679, 0.29527, 0.955279, 0.016078, 0.955129, -0.295551, 0.0194726, 0.134, -0.02, -0.171)
 visible = false
 texture_filter = 0
 texture = ExtResource("2_072n2")
 
 [node name="FluteSprite" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.996195, -0.0871557, 0, 0.0871557, 0.996195, 0, -0.1, -0.269502)
+transform = Transform3D(1, 0, 0, 0, 0.996195, -0.0871556, 0, 0.0871556, 0.996195, 0, -0.1, -0.269502)
 visible = false
 texture_filter = 0
 texture = ExtResource("4_w30cd")
@@ -604,3 +655,8 @@ max_polyphony = 5
 max_polyphony = 2
 
 [node name="FloorRayCast3D" type="RayCast3D" parent="."]
+
+[node name="bowNode" parent="." instance=ExtResource("11_tr1pb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.165981, 0, -0.138861)
+
+[connection signal="on_screen_swipe" from="swipeNode" to="." method="_on_node_screen_swipe"]

@@ -2,27 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcvpc3mr5ucjr"
-path.s3tc="res://.godot/imported/minimap_player_marker.png-25f16c46b907d03e4592b5e7ff6764fa.s3tc.ctex"
+uid="uid://bno4ujm3perju"
+path="res://.godot/imported/attack_icon.png-83fa74fef97ccd92bab197bf4bba1605.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/HUD/minimap_player_marker.png"
-dest_files=["res://.godot/imported/minimap_player_marker.png-25f16c46b907d03e4592b5e7ff6764fa.s3tc.ctex"]
+source_file="res://Assets/HUD/attack_icon.png"
+dest_files=["res://.godot/imported/attack_icon.png-83fa74fef97ccd92bab197bf4bba1605.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -32,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

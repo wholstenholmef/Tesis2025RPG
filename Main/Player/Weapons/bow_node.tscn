@@ -1,0 +1,382 @@
+[gd_scene load_steps=19 format=3 uid="uid://base3nglmluw6"]
+
+[ext_resource type="Texture2D" uid="uid://boi01k3853jc4" path="res://Assets/Player/Weapons/bow.png" id="1_jnojx"]
+[ext_resource type="Script" path="res://Main/Player/Weapons/bow.gd" id="1_x0ntn"]
+[ext_resource type="AudioStream" uid="uid://bp5cw6mykobl" path="res://Assets/SFX/Weapons/Bow/bow_release.wav" id="2_k8hlm"]
+[ext_resource type="AudioStream" uid="uid://daswbgkk4587c" path="res://Assets/SFX/Weapons/Bow/bow_reload.wav" id="4_31ka3"]
+[ext_resource type="Texture2D" uid="uid://cv8ixb62dy00w" path="res://Assets/Particles/spark_pixel.png" id="5_kjtid"]
+[ext_resource type="Texture2D" uid="uid://bkbsx7o580whc" path="res://Assets/HUD/bow_crosshair.png" id="6_lnc88"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hj63y"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("5_kjtid")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dgaln"]
+material = SubResource("StandardMaterial3D_hj63y")
+size = Vector2(0.01, 0.2)
+orientation = 2
+
+[sub_resource type="Gradient" id="Gradient_37anm"]
+offsets = PackedFloat32Array(0, 0.589286, 1)
+colors = PackedColorArray(1, 1, 1, 0.588235, 1, 1, 1, 0.588235, 1, 1, 1, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_h5nae"]
+material = SubResource("StandardMaterial3D_hj63y")
+size = Vector2(0.01, 0.2)
+orientation = 2
+
+[sub_resource type="Curve" id="Curve_2erj3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.698473, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_mswy1"]
+offsets = PackedFloat32Array(0, 0.883929, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.784314, 1, 1, 1, 0)
+
+[sub_resource type="Animation" id="Animation_v3vw5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bowSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("bowSprite:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Path3D/PathFollow3D/arrowMarker:position:z")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Path3D/PathFollow3D/arrowMarker:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sparksVFX2:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ysahy"]
+resource_name = "bow_draw"
+length = 2.0
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bowSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.85714),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [0, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.142857, 0.285714, 0.428571, 0.571429, 0.714286, 0.857143, 1, 1.14286, 1.28571, 1.42857, 1.57143, 1.71429, 1.85714, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 0.223763, 0.289445, 0.35754, 0.427626, 0.499173, 0.571515, 0.643822, 0.715057, 0.783918, 0.848743, 0.907355, 0.920943, 0.956766, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sparksVFX2:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.285714),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_adk4u"]
+resource_name = "bow_reload"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path3D/PathFollow3D/arrowMarker:position:z")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.428571, 0.857143),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [-0.2, 0.1, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("bowSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation_degrees:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.8),
+"transitions": PackedFloat32Array(0.5, 1, 2, 1),
+"update": 0,
+"values": [0.0, -25.0, -25.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("Path3D/PathFollow3D/arrowMarker:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_ll470"]
+resource_name = "bow_shoot"
+length = 0.5
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bowSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.142857),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [6, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("bowSprite:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.142857, 0.428571),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [1.0, 0.7, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k5nsy"]
+_data = {
+"RESET": SubResource("Animation_v3vw5"),
+"bow_draw": SubResource("Animation_ysahy"),
+"bow_reload": SubResource("Animation_adk4u"),
+"bow_shoot": SubResource("Animation_ll470")
+}
+
+[sub_resource type="Curve3D" id="Curve3D_qhywr"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, -0.12, 0, 0, 0, 0, 0, 0, 0, 0, -0.03),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="bowNode" type="Node3D"]
+script = ExtResource("1_x0ntn")
+metadata/_edit_vertical_guides_ = [320.0, 160.0]
+metadata/_edit_horizontal_guides_ = [180.0, 90.0]
+
+[node name="sparksVFX" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 8.74228e-08, -8.74228e-08, -8.74228e-08, -4.37114e-08, -1, -8.74228e-08, 1, -4.37114e-08, -0.0178865, 0, -0.0916754)
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.9
+lifetime_randomness = 0.5
+mesh = SubResource("PlaneMesh_dgaln")
+particle_flag_align_y = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+damping_min = 1.0
+damping_max = 3.0
+scale_amount_min = 0.1
+color_ramp = SubResource("Gradient_37anm")
+
+[node name="sparksVFX2" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 8.74228e-08, -8.74228e-08, -8.74228e-08, -4.37114e-08, -1, -8.74228e-08, 1, -4.37114e-08, -0.0178865, 0, -0.0916754)
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 0.9
+lifetime_randomness = 0.5
+mesh = SubResource("PlaneMesh_h5nae")
+emission_shape = 2
+emission_sphere_radius = 0.6
+particle_flag_align_y = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -3.0
+linear_accel_max = -3.0
+radial_accel_min = -5.0
+radial_accel_max = -5.0
+scale_amount_min = 0.1
+scale_amount_curve = SubResource("Curve_2erj3")
+color_ramp = SubResource("Gradient_mswy1")
+
+[node name="drawSFX" type="AudioStreamPlayer3D" parent="."]
+
+[node name="releaseSFX" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_k8hlm")
+volume_db = -20.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_k5nsy")
+}
+
+[node name="bowSprite" type="Sprite3D" parent="."]
+axis = 0
+texture_filter = 0
+texture = ExtResource("1_jnojx")
+hframes = 7
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_qhywr")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-0.999997, 0, -8.74224e-08, 0, 0.999994, 0, 8.74225e-08, 0, -0.999996, 0, 0, -0.12)
+
+[node name="arrowMarker" type="Node3D" parent="Path3D/PathFollow3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="reloadSFX" type="AudioStreamPlayer3D" parent="Path3D/PathFollow3D/arrowMarker"]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1.00001, 0, 1.74846e-07, 0, 1, 1.22392e-08, 0, -0.17)
+stream = ExtResource("4_31ka3")
+volume_db = 3.0
+max_distance = 0.6
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+follow_viewport_enabled = true
+
+[node name="debugLabel" type="Label" parent="CanvasLayer"]
+visible = false
+offset_right = 40.0
+offset_bottom = 12.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_right = 32.0
+offset_bottom = 32.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(32, 32)
+render_target_update_mode = 4
+
+[node name="crosshairSprite" type="Sprite2D" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+position = Vector2(16, 16)
+texture = ExtResource("6_lnc88")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

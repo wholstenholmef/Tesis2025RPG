@@ -4,6 +4,7 @@ var player_tweener : Tween = null
 var camera_tweener : Tween = null
 var item_tweener : Tween = null
 
+@export var move_speed_in_seconds : float = 0.6
 var current_health : int
 var current_experience : int = 0
 var exp_to_next_level : int = 1
@@ -37,7 +38,7 @@ enum C_MACHINE {
 
 var stone_footsteps_path = "res://Assets/SFX/Footsteps/Stone_footsteps/footstep"
 var river_footsteps_path = "res://Assets/SFX/Footsteps/River_footsteps/footstep"
-var sword_slashes_path = "res://Assets/SFX/SwordSlashes/swoosh"
+var sword_slashes_path = "res://Assets/SFX/Weapons/SwordSlashes/swoosh"
 var stone_footsteps_SFX = []
 var river_footsteps_SFX = []
 var sword_slashes_SFX = []
@@ -47,7 +48,7 @@ var sfx_suffix = ".wav"
 func _ready() -> void:
 	state = MACHINE.IDLE
 	current_health = stats.max_health
-	equip($weaponSprite)
+	#equip($weaponSprite)
 	load_SFX()
 
 func load_SFX() -> void:
@@ -57,7 +58,7 @@ func load_SFX() -> void:
 	for i in range(1, 12):
 		var sfx_load = load(river_footsteps_path + str(i) + sfx_suffix)
 		river_footsteps_SFX.append(sfx_load)
-	for i in range(1, 4):
+	for i in range(1, 3):
 		var sfx_load = load(sword_slashes_path + str(i) + sfx_suffix)
 		sword_slashes_SFX.append(sfx_load)
 
@@ -76,13 +77,24 @@ func get_input() -> void:
 				turn(Vector2.RIGHT)
 			if Input.is_action_pressed("left"):
 				turn(Vector2.LEFT)
-			if Input.is_action_just_pressed("attack"):
-				interact()
+			#if Input.is_action_just_pressed("attack"):
+				#interact()
 		MACHINE.IN_COMBAT:
 			if combat_state == C_MACHINE.READY:
 				if Input.is_action_just_pressed("attack"):
 					basic_attack()
 					attacked.emit(stats.power)
+
+func _on_node_screen_swipe(direction : String) -> void:
+	match direction:
+		"up":
+			move(Vector3.FORWARD)
+		"down":
+			move(Vector3.BACK)
+		"right":
+			turn(Vector2.RIGHT)
+		"left":
+			turn(Vector2.LEFT)
 
 func unequip(node) -> void:
 	if item_tweener:
@@ -129,8 +141,8 @@ func move(move_dir : Vector3) -> void:
 	$CollisionRayCast3D.force_raycast_update()
 	if $CollisionRayCast3D.is_colliding():
 		player_tweener = create_tween()
-		player_tweener.tween_property(self, "global_transform:origin", (global_transform.basis * move_dir / 2), 0.2).as_relative()
-		player_tweener.tween_property(self, "global_transform:origin", -(global_transform.basis * move_dir / 2), 0.2).as_relative()
+		player_tweener.tween_property(self, "global_transform:origin", (global_transform.basis * move_dir / 2), move_speed_in_seconds/2).as_relative()
+		player_tweener.tween_property(self, "global_transform:origin", -(global_transform.basis * move_dir / 2), move_speed_in_seconds/2).as_relative()
 		await player_tweener.finished
 		state = MACHINE.IDLE
 		return
@@ -151,7 +163,7 @@ func move(move_dir : Vector3) -> void:
 	$AnimationPlayer.play("move")
 	
 	player_tweener = create_tween()
-	player_tweener.tween_property(self, "global_transform:origin", global_transform.basis * (move_dir*2), 0.5).as_relative()
+	player_tweener.tween_property(self, "global_transform:origin", global_transform.basis * (move_dir*2), move_speed_in_seconds).as_relative()
 	await player_tweener.finished
 	
 	state = MACHINE.IDLE

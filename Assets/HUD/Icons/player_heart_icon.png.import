@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3flj0fynxhb4"
-path="res://.godot/imported/player_agility_icon.png-9c6f21ad60c02d982ba000ea2e44dabf.ctex"
+uid="uid://bovqe57bbf3ru"
+path="res://.godot/imported/player_heart_icon.png-9aa2dc8e055442d221460faa148ca2b6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/HUD/player_agility_icon.png"
-dest_files=["res://.godot/imported/player_agility_icon.png-9c6f21ad60c02d982ba000ea2e44dabf.ctex"]
+source_file="res://Assets/HUD/Icons/player_heart_icon.png"
+dest_files=["res://.godot/imported/player_heart_icon.png-9aa2dc8e055442d221460faa148ca2b6.ctex"]
 
 [params]
 

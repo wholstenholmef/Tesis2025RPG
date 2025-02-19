@@ -2,16 +2,15 @@
 
 [ext_resource type="Script" path="res://Main/HUD/MessageLog/message_log_node.gd" id="1_0wn46"]
 [ext_resource type="Texture2D" uid="uid://b12p8wdnimno5" path="res://Assets/HUD/9patchalpha.png" id="2_moqr5"]
-[ext_resource type="FontFile" uid="uid://55gcokgbjfke" path="res://Assets/Fonts/BitTypeWriter.ttf" id="3_w7mmd"]
+[ext_resource type="FontFile" uid="uid://bqj0y05ijj2wh" path="res://Assets/Fonts/Renogare-Regular.otf" id="3_dhq0d"]
 
 [node name="messageLogNode" type="MarginContainer"]
-offset_left = 103.0
-offset_top = 102.0
-offset_right = 320.0
-offset_bottom = 180.0
+offset_right = 126.0
+offset_bottom = 107.0
 script = ExtResource("1_0wn46")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
+visible = false
 layout_mode = 2
 texture = ExtResource("2_moqr5")
 region_rect = Rect2(0, 0, 48, 48)
@@ -32,9 +31,7 @@ unique_name_in_owner = true
 clip_contents = false
 layout_mode = 2
 theme_override_constants/line_separation = -2
-theme_override_fonts/normal_font = ExtResource("3_w7mmd")
+theme_override_fonts/normal_font = ExtResource("3_dhq0d")
 bbcode_enabled = true
 scroll_active = false
 scroll_following = true
-visible_characters = 0
-visible_ratio = 0.0

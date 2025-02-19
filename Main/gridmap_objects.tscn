@@ -7,7 +7,6 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ka7x"]
 resource_name = "Material"
 cull_mode = 2
-shading_mode = 0
 albedo_texture = ExtResource("2_xjpdp")
 texture_filter = 0
 texture_repeat = false
@@ -50,7 +49,6 @@ size = Vector3(2.5, 2, 2.5)
 [sub_resource type="PlaneMesh" id="PlaneMesh_2j10x"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w2wak"]
-shading_mode = 0
 albedo_texture = ExtResource("1_h2le1")
 texture_filter = 0
 

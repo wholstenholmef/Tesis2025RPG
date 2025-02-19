@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ev7ammea78qp"]
+
+[ext_resource type="Script" path="res://Main/Player/player_combat.gd" id="1_p8qj8"]
+[ext_resource type="PackedScene" uid="uid://base3nglmluw6" path="res://Main/Player/Weapons/bow_node.tscn" id="2_bm0jj"]
+
+[node name="playerCombat" type="Node3D"]
+script = ExtResource("1_p8qj8")
+metadata/_edit_vertical_guides_ = [320.0, 160.0]
+metadata/_edit_horizontal_guides_ = [180.0, 90.0]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="bowNode" parent="." instance=ExtResource("2_bm0jj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.136639, 0, -0.119291)

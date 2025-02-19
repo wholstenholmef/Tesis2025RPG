@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dejfjxlkxv0jx"
 path.s3tc="res://.godot/imported/explosion_sheet.png-f55692a5f66b62053fd1acea3269d309.s3tc.ctex"
+path.etc2="res://.godot/imported/explosion_sheet.png-f55692a5f66b62053fd1acea3269d309.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Assets/Player/Spells/explosion_sheet.png"
-dest_files=["res://.godot/imported/explosion_sheet.png-f55692a5f66b62053fd1acea3269d309.s3tc.ctex"]
+dest_files=["res://.godot/imported/explosion_sheet.png-f55692a5f66b62053fd1acea3269d309.s3tc.ctex", "res://.godot/imported/explosion_sheet.png-f55692a5f66b62053fd1acea3269d309.etc2.ctex"]
 
 [params]
 

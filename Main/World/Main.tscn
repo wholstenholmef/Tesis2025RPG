@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://biahwp1lhhnbb"]
+
+[ext_resource type="PackedScene" uid="uid://c7gl3p14kbnd" path="res://Main/World/World.tscn" id="1_1urte"]
+[ext_resource type="Texture2D" uid="uid://b12p8wdnimno5" path="res://Assets/HUD/9patchalpha.png" id="3_mrsyp"]
+[ext_resource type="Texture2D" uid="uid://dbhmnsxy0kyp2" path="res://Assets/HUD/move_buttons/move_button_normal.png" id="4_hyjh2"]
+[ext_resource type="Texture2D" uid="uid://bjb1up2xs8uq7" path="res://Assets/HUD/move_buttons/move_button_pressed.png" id="5_oddxs"]
+[ext_resource type="Texture2D" uid="uid://dac2kjq6qamve" path="res://Assets/HUD/move_buttons/move_down_normal.png" id="6_vciq6"]
+[ext_resource type="Texture2D" uid="uid://hekdm85ovmwy" path="res://Assets/HUD/move_buttons/move_down_pressed.png" id="7_ekcmc"]
+[ext_resource type="Texture2D" uid="uid://rkwkl6h2wwng" path="res://Assets/HUD/move_buttons/move_up_normal.png" id="8_sxj88"]
+[ext_resource type="Texture2D" uid="uid://cquwp1kvuc4gx" path="res://Assets/HUD/move_buttons/move_up_pressed.png" id="9_l1umn"]
+[ext_resource type="Texture2D" uid="uid://bno4ujm3perju" path="res://Assets/HUD/attack_icon.png" id="10_q8w1x"]
+
+[node name="Main" type="Node"]
+metadata/_edit_vertical_guides_ = [320.0]
+metadata/_edit_horizontal_guides_ = [180.0]
+
+[node name="BackgroundColor" type="ColorRect" parent="."]
+offset_right = 320.0
+offset_bottom = 180.0
+color = Color(0, 0, 0, 1)
+
+[node name="World" parent="." instance=ExtResource("1_1urte")]
+
+[node name="messageLogFrame" type="MarginContainer" parent="."]
+offset_left = 213.0
+offset_right = 320.0
+offset_bottom = 120.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="messageLogFrame"]
+layout_mode = 2
+texture = ExtResource("3_mrsyp")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MoveButtons" type="Node2D" parent="."]
+visible = false
+position = Vector2(4, 148)
+
+[node name="moveLeftButton" type="TouchScreenButton" parent="MoveButtons"]
+position = Vector2(0, -16)
+texture_normal = ExtResource("4_hyjh2")
+texture_pressed = ExtResource("5_oddxs")
+action = "left"
+
+[node name="moveDownButton" type="TouchScreenButton" parent="MoveButtons"]
+position = Vector2(28, 0)
+texture_normal = ExtResource("6_vciq6")
+texture_pressed = ExtResource("7_ekcmc")
+action = "back"
+
+[node name="moveRightButton" type="TouchScreenButton" parent="MoveButtons"]
+position = Vector2(89, -16)
+scale = Vector2(-1, 1)
+texture_normal = ExtResource("4_hyjh2")
+texture_pressed = ExtResource("5_oddxs")
+action = "right"
+
+[node name="moveUpButton" type="TouchScreenButton" parent="MoveButtons"]
+position = Vector2(28, -30)
+texture_normal = ExtResource("8_sxj88")
+texture_pressed = ExtResource("9_l1umn")
+action = "forward"
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="MoveButtons"]
+position = Vector2(263, -23)
+texture_normal = ExtResource("10_q8w1x")
