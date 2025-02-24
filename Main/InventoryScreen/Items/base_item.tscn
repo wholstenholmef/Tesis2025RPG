@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://be20mkkqhpo2b"]
+
+[ext_resource type="Texture2D" uid="uid://cq7kdb0j5ukxx" path="res://Assets/Player/sword.png" id="1_7admj"]
+[ext_resource type="Script" path="res://Main/InventoryScreen/Items/base_item.gd" id="1_xivsp"]
+
+[sub_resource type="Animation" id="Animation_eegxg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:rotation_degrees:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_rv3dd"]
+resource_name = "loop"
+length = 3.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:rotation_degrees:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 180),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 360.0, Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_318n0"]
+_data = {
+"RESET": SubResource("Animation_eegxg"),
+"loop": SubResource("Animation_rv3dd")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rnlck"]
+radius = 0.25
+
+[node name="baseItem" type="Area3D"]
+script = ExtResource("1_xivsp")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 6, 0, 1, 0)
+shaded = true
+no_depth_test = true
+alpha_cut = 3
+texture_filter = 0
+texture = ExtResource("1_7admj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_318n0")
+}
+autoplay = "loop"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_rnlck")

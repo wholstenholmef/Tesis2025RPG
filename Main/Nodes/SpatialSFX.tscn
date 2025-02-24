@@ -3,4 +3,4 @@
 [node name="SpatialSfx" type="AudioStreamPlayer3D"]
 volume_db = -30.0
 autoplay = true
-max_distance = 3.0
+max_distance = 4.0

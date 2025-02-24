@@ -86,7 +86,7 @@ func change_hour() -> void:
 
 func change_day() -> void:
 	current_day += 1
-	%dayLabel.text = "[center] " + "DAY " + str(current_day)
+	get_node(dayLabel).text = "[center] " + "DAY " + str(current_day)
 
 func random_enemy_encounter() -> void:
 	var rand_int = randi_range(0, 100)

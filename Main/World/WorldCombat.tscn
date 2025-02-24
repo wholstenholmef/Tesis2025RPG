@@ -105,6 +105,9 @@ max_distance = 3.0
 [node name="playerCombat" parent="ScreenMarginContainer/mainViewportContainer/SubViewport" instance=ExtResource("5_rdr5o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.611954, 0)
 
+[node name="PathFollow3D" parent="ScreenMarginContainer/mainViewportContainer/SubViewport/playerCombat/bowNode/Path3D" index="0"]
+transform = Transform3D(-0.999997, 0, -8.74224e-08, 0, 0.999994, 0, 8.74225e-08, 0, -0.999996, 0, 0, -0.12)
+
 [node name="NinePatchRect" type="NinePatchRect" parent="ScreenMarginContainer"]
 layout_mode = 2
 texture = ExtResource("6_1bqyi")

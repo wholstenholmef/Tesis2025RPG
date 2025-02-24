@@ -1,14 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://cb5ubjgvsbt6w"]
+[gd_scene load_steps=6 format=3 uid="uid://cb5ubjgvsbt6w"]
 
 [ext_resource type="PackedScene" uid="uid://biahwp1lhhnbb" path="res://Main/World/Main.tscn" id="1_hlyoq"]
 [ext_resource type="PackedScene" uid="uid://dka7rurpof1am" path="res://Main/HUD/MessageLog/message_log_node.tscn" id="2_pr25k"]
 [ext_resource type="FontFile" uid="uid://bqj0y05ijj2wh" path="res://Assets/Fonts/Renogare-Regular.otf" id="3_21uk7"]
 
+[sub_resource type="Animation" id="Animation_1hk8v"]
+resource_name = "fade_in"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k8onm"]
+_data = {
+"fade_in": SubResource("Animation_1hk8v")
+}
+
 [node name="MainHighRes" type="Node"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="mainScreenLayer" type="CanvasLayer" parent="."]
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="mainScreenLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -17,7 +25,7 @@ grow_vertical = 2
 stretch = true
 stretch_shrink = 2
 
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="mainScreenLayer/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
 snap_2d_transforms_to_pixel = true
@@ -25,23 +33,25 @@ snap_2d_vertices_to_pixel = true
 size = Vector2i(320, 180)
 render_target_update_mode = 4
 
-[node name="Main" parent="CanvasLayer/SubViewportContainer/SubViewport" instance=ExtResource("1_hlyoq")]
+[node name="Main" parent="mainScreenLayer/SubViewportContainer/SubViewport" instance=ExtResource("1_hlyoq")]
 
-[node name="World" parent="CanvasLayer/SubViewportContainer/SubViewport/Main" index="1"]
-timeLabel = NodePath("../../../../../CanvasLayer2/hourLabel")
-dayLabel = NodePath("../../../../../CanvasLayer2/dayLabel")
+[node name="World" parent="mainScreenLayer/SubViewportContainer/SubViewport/Main" index="1"]
+timeLabel = NodePath("../../../../../textLayer/hourLabel")
+dayLabel = NodePath("../../../../../textLayer/dayLabel")
 
-[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+[node name="textLayer" type="CanvasLayer" parent="."]
 layer = 6
 
-[node name="messageLogNode" parent="CanvasLayer2" instance=ExtResource("2_pr25k")]
+[node name="messageLogNode" parent="textLayer" instance=ExtResource("2_pr25k")]
 offset_left = 432.0
 offset_top = 4.0
 offset_right = 635.0
 offset_bottom = 240.0
+test_message = "Holaa [wave] hola mundooooo [/wave]"
 
-[node name="hourLabel" type="RichTextLabel" parent="CanvasLayer2"]
+[node name="hourLabel" type="RichTextLabel" parent="textLayer"]
 unique_name_in_owner = true
+visible = false
 clip_contents = false
 offset_left = 2.0
 offset_top = 223.0
@@ -53,8 +63,9 @@ theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
 text = "[center] 06:00"
 
-[node name="dayLabel" type="RichTextLabel" parent="CanvasLayer2"]
+[node name="dayLabel" type="RichTextLabel" parent="textLayer"]
 unique_name_in_owner = true
+visible = false
 clip_contents = false
 offset_right = 424.0
 offset_bottom = 30.0
@@ -63,5 +74,19 @@ theme_override_fonts/normal_font = ExtResource("3_21uk7")
 bbcode_enabled = true
 text = "[center] day 01"
 
-[editable path="CanvasLayer/SubViewportContainer/SubViewport/Main"]
-[editable path="CanvasLayer2/messageLogNode"]
+[node name="pauseScreenLayer" type="CanvasLayer" parent="."]
+layer = 128
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="pauseScreenLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_k8onm")
+}
+
+[node name="ColorRect" type="ColorRect" parent="pauseScreenLayer"]
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0, 0, 0, 1)
+
+[editable path="mainScreenLayer/SubViewportContainer/SubViewport/Main"]
+[editable path="textLayer/messageLogNode"]

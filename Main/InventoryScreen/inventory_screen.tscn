@@ -1,0 +1,100 @@
+[gd_scene load_steps=12 format=3 uid="uid://3stwaswx2xj0"]
+
+[ext_resource type="Script" path="res://Main/InventoryScreen/inventory_screen.gd" id="1_nyhws"]
+[ext_resource type="PackedScene" uid="uid://52p8ece1qk6q" path="res://Main/Nodes/swipe_node/swipe_node.tscn" id="2_7gmor"]
+[ext_resource type="Shader" path="res://shaders/Dither.gdshader" id="3_ykv35"]
+[ext_resource type="MeshLibrary" uid="uid://d2o2eks8m65m5" path="res://dungeon_gridmap.tres" id="4_7b63m"]
+[ext_resource type="PackedScene" uid="uid://be20mkkqhpo2b" path="res://Main/InventoryScreen/Items/base_item.tscn" id="5_8cp06"]
+[ext_resource type="Texture2D" uid="uid://b12p8wdnimno5" path="res://Assets/HUD/9patchalpha.png" id="6_31sio"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g2ts0"]
+shader = ExtResource("3_ykv35")
+shader_parameter/colors = 8.0
+shader_parameter/dither = 0.15
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ahnrm"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0.0235294, 0.0235294, 0.0313726, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.0235294, 0.0235294, 0.0313726, 1)
+
+[sub_resource type="Sky" id="Sky_ej1a4"]
+sky_material = SubResource("ProceduralSkyMaterial_ahnrm")
+
+[sub_resource type="Environment" id="Environment_pf8un"]
+background_mode = 2
+sky = SubResource("Sky_ej1a4")
+tonemap_mode = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2x5i7"]
+size = Vector3(0.2, 2, 3.606)
+
+[node name="inventoryScreen" type="Node"]
+script = ExtResource("1_nyhws")
+metadata/_edit_vertical_guides_ = [320.0]
+metadata/_edit_horizontal_guides_ = [180.0]
+
+[node name="swipeNode" parent="." instance=ExtResource("2_7gmor")]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+offset_right = 320.0
+offset_bottom = 180.0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MarginContainer"]
+material = SubResource("ShaderMaterial_g2ts0")
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="MarginContainer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(320, 180)
+render_target_update_mode = 4
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="MarginContainer/SubViewportContainer/SubViewport"]
+environment = SubResource("Environment_pf8un")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MarginContainer/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.199262, 0)
+
+[node name="Camera3D" type="Camera3D" parent="MarginContainer/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.998366, 0.0571459, 0, -0.0571459, 0.998366, 0, 0.796306, 1.82696)
+
+[node name="itemArea3D" type="Area3D" parent="MarginContainer/SubViewportContainer/SubViewport/Camera3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MarginContainer/SubViewportContainer/SubViewport/Camera3D/itemArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4.17233e-07, -1.30322)
+shape = SubResource("BoxShape3D_2x5i7")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="MarginContainer/SubViewportContainer/SubViewport/Camera3D"]
+spot_range = 5.04247
+
+[node name="GridMap" type="GridMap" parent="MarginContainer/SubViewportContainer/SubViewport"]
+mesh_library = ExtResource("4_7b63m")
+data = {
+"cells": PackedInt32Array(0, 0, 1441795, 0, 65535, 1441795, 65535, 65535, 1441795, 65535, 0, 1441795, 65535, 65534, 1441795, 0, 65534, 1441795, 1, 65534, 1441795, 1, 65535, 1441795, 1, 0, 1441795, 1, 1, 1441795, 0, 1, 1441795, 65535, 1, 1441795, 65534, 1, 1441795, 65534, 0, 1441795, 65534, 65535, 1441795, 65534, 65534, 1441795, 65534, 65533, 1441795, 65535, 65533, 1441795, 0, 65533, 1441795, 1, 65533, 1441795, 65533, 65533, 1441795, 65533, 65534, 1441795, 65533, 65535, 1441795, 65533, 0, 1441795, 65533, 1, 1441795, 65533, 2, 1441795, 65534, 2, 1441795, 65535, 2, 1441795, 0, 2, 1441795, 1, 2, 1441795, 2, 2, 1441795, 2, 1, 1441795, 2, 0, 1441795, 2, 65535, 1441795, 2, 65534, 1441795, 2, 65533, 1441795)
+}
+
+[node name="ItemsMainNode" type="Node3D" parent="MarginContainer/SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+
+[node name="baseItem2" parent="MarginContainer/SubViewportContainer/SubViewport/ItemsMainNode" instance=ExtResource("5_8cp06")]
+item_name = "Espada"
+item_description = "Una espada metalica de ligero peso, Usala para combatir enemigos"
+
+[node name="baseItem" parent="MarginContainer/SubViewportContainer/SubViewport/ItemsMainNode" instance=ExtResource("5_8cp06")]
+transform = Transform3D(-0.19646, 0, 0.980512, 0, 1, 0, -0.980512, 0, -0.19646, 1.5, 0, 0)
+
+[node name="baseItem3" parent="MarginContainer/SubViewportContainer/SubViewport/ItemsMainNode" instance=ExtResource("5_8cp06")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("6_31sio")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[connection signal="on_screen_swipe" from="swipeNode" to="." method="_on_node_screen_swipe"]
+[connection signal="area_entered" from="MarginContainer/SubViewportContainer/SubViewport/Camera3D/itemArea3D" to="." method="_on_item_area_entered"]
+[connection signal="area_exited" from="MarginContainer/SubViewportContainer/SubViewport/Camera3D/itemArea3D" to="." method="_on_item_area_exited"]

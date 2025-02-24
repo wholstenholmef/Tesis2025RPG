@@ -1,10 +1,11 @@
 extends MarginContainer
 
 #var msg_tweener
+@export_multiline var test_message = "Hola mundo"
 
 func _ready() -> void:
 	$MarginContainer/messageLog.visible_characters = 0
-	add_message("[wave] hola miguel :D [/wave] ")
+	add_message(test_message)
 	#%messageLog.visible_characters = 0
 	pass
 

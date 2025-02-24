@@ -8,6 +8,7 @@
 offset_right = 126.0
 offset_bottom = 107.0
 script = ExtResource("1_0wn46")
+test_message = "Holaa [wave] steveeen [/wave]"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 visible = false

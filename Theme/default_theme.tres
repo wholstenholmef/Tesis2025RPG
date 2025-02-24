@@ -1,0 +1,4 @@
+[gd_resource type="Theme" format=3 uid="uid://c41akf1w0n3l8"]
+
+[resource]
+RichTextLabel/constants/outline_size = 24

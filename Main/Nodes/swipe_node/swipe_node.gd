@@ -20,7 +20,7 @@ func _input(event: InputEvent) -> void:
 		var viewport_transform = get_viewport().get_canvas_transform()
 		if event.pressed:
 			start_pos = viewport_transform.affine_inverse() * event.position
-			print("aqui: " + str(start_pos))
+			#print("aqui: " + str(start_pos))
 		else:
 			end_pos = viewport_transform.affine_inverse() * event.position
 			

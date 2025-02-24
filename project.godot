@@ -27,7 +27,7 @@ floor_stone=""
 
 [gui]
 
-theme/custom_font="res://Assets/Fonts/NESCyrillic.ttf"
+theme/custom_font="res://Assets/Fonts/Renogare-Regular.otf"
 
 [input]
 
