@@ -1,0 +1,155 @@
+[gd_scene load_steps=14 format=3 uid="uid://c5cweqqdwboqj"]
+
+[ext_resource type="Script" uid="uid://cu2rieec4rav5" path="res://Main/Player/Player.gd" id="1_stk28"]
+[ext_resource type="Resource" uid="uid://die1ya61u7uwt" path="res://Main/Player/player_base.tres" id="2_k1xcr"]
+[ext_resource type="Texture2D" uid="uid://bcvpc3mr5ucjr" path="res://Assets/HUD/Icons/minimap_player_marker.png" id="2_oqutq"]
+[ext_resource type="PackedScene" uid="uid://bciylw13k2ygu" path="res://Main/HUD/ScreenLayers/VFX_screen_layer.tscn" id="3_w3p4g"]
+[ext_resource type="PackedScene" uid="uid://b6mq7x2q66ngv" path="res://Main/Player/Tools/MagicGuitar/magic_guitar.tscn" id="4_w7xjh"]
+[ext_resource type="AudioStream" uid="uid://bal757g8otcdy" path="res://Assets/SFX/WetDripping/dripping1.wav" id="12_76lxq"]
+
+[sub_resource type="Animation" id="Animation_n745t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_kvko5"]
+resource_name = "attack"
+length = 0.5
+step = 0.05
+
+[sub_resource type="Animation" id="Animation_jm683"]
+resource_name = "look_down"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector3(1.309, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sfki0"]
+resource_name = "look_up"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.309, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_e43u3"]
+resource_name = "move"
+length = 0.45
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.45),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [0.0, 0.02, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yg0au"]
+_data = {
+&"RESET": SubResource("Animation_n745t"),
+&"attack": SubResource("Animation_kvko5"),
+&"look_down": SubResource("Animation_jm683"),
+&"look_up": SubResource("Animation_sfki0"),
+&"move": SubResource("Animation_e43u3")
+}
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vlahi"]
+radius = 0.1
+
+[node name="Warrior" type="Node3D" groups=["Player"]]
+script = ExtResource("1_stk28")
+stats = ExtResource("2_k1xcr")
+move_speed_in_seconds = 0.5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_yg0au")
+}
+
+[node name="VFXScreenLayer" parent="." instance=ExtResource("3_w3p4g")]
+unique_name_in_owner = true
+
+[node name="Inventory" type="Node3D" parent="."]
+
+[node name="magicGuitar" parent="Inventory" instance=ExtResource("4_w7xjh")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+current = true
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_vlahi")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_energy = 1.5
+
+[node name="CollisionRayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -1)
+hit_from_inside = true
+
+[node name="FloorRayCast3D" type="RayCast3D" parent="."]
+
+[node name="minimapMarker" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+layers = 2
+pixel_size = 0.05
+axis = 1
+texture_filter = 0
+texture = ExtResource("2_oqutq")
+
+[node name="attackSFX" type="AudioStreamPlayer3D" parent="."]
+max_polyphony = 2
+
+[node name="drippingWaterSFX" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0827454, 0)
+stream = ExtResource("12_76lxq")
+volume_db = -50.0
+max_distance = 0.5
+max_polyphony = 2
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

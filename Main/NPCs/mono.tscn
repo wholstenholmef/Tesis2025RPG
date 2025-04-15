@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://duugep3sek1am"]
+
+[ext_resource type="PackedScene" uid="uid://cawd730r51nq0" path="res://Main/NPCs/NPCBase.tscn" id="1_1npyi"]
+[ext_resource type="Texture2D" uid="uid://b464t17yreit5" path="res://Assets/NPCs/Mono/mono_running_sheet.png" id="2_sjfgt"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lqo1u"]
+atlas = ExtResource("2_sjfgt")
+region = Rect2(0, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48u88"]
+atlas = ExtResource("2_sjfgt")
+region = Rect2(48, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6mmq0"]
+atlas = ExtResource("2_sjfgt")
+region = Rect2(96, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3hln"]
+atlas = ExtResource("2_sjfgt")
+region = Rect2(144, 0, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6cxr"]
+atlas = ExtResource("2_sjfgt")
+region = Rect2(0, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oy5tl"]
+atlas = ExtResource("2_sjfgt")
+region = Rect2(48, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqvgt"]
+atlas = ExtResource("2_sjfgt")
+region = Rect2(96, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ruq37"]
+atlas = ExtResource("2_sjfgt")
+region = Rect2(144, 32, 48, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pueam"]
+atlas = ExtResource("2_sjfgt")
+region = Rect2(192, 32, 48, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tb1n2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lqo1u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48u88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6mmq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3hln")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6cxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oy5tl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqvgt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ruq37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pueam")
+}],
+"loop": true,
+"name": &"running",
+"speed": 10.0
+}]
+
+[node name="NpcBase" instance=ExtResource("1_1npyi")]
+
+[node name="AnimatedSprite3D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_tb1n2")
+frame_progress = 0.0017729

@@ -1,24 +1,25 @@
 [gd_scene load_steps=4 format=3 uid="uid://dka7rurpof1am"]
 
-[ext_resource type="Script" path="res://Main/HUD/MessageLog/message_log_node.gd" id="1_0wn46"]
-[ext_resource type="Texture2D" uid="uid://b12p8wdnimno5" path="res://Assets/HUD/9patchalpha.png" id="2_moqr5"]
+[ext_resource type="Script" uid="uid://txtdq5h54pue" path="res://Main/HUD/MessageLog/message_log_node.gd" id="1_0wn46"]
+[ext_resource type="Texture2D" uid="uid://cnm1wkeikdafb" path="res://Assets/HUD/9Patch/9patch2x.png" id="2_p3l2c"]
 [ext_resource type="FontFile" uid="uid://bqj0y05ijj2wh" path="res://Assets/Fonts/Renogare-Regular.otf" id="3_dhq0d"]
 
 [node name="messageLogNode" type="MarginContainer"]
+custom_minimum_size = Vector2(192, 360)
 offset_right = 126.0
 offset_bottom = 107.0
+size_flags_horizontal = 2
+size_flags_vertical = 2
 script = ExtResource("1_0wn46")
-test_message = "Holaa [wave] steveeen [/wave]"
+test_message = "Holaa [wave] mundo [/wave]"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-visible = false
 layout_mode = 2
-texture = ExtResource("2_moqr5")
-region_rect = Rect2(0, 0, 48, 48)
-patch_margin_left = 16
-patch_margin_top = 16
-patch_margin_right = 16
-patch_margin_bottom = 16
+texture = ExtResource("2_p3l2c")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2

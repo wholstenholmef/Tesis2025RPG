@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cawd730r51nq0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u12o3"]
+
+[node name="NpcBase" type="Node3D"]
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+centered = false
+offset = Vector2(-22, 0)
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_u12o3")
+frame_progress = 0.23338

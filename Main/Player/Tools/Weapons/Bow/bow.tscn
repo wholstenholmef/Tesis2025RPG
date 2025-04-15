@@ -1,0 +1,455 @@
+[gd_scene load_steps=24 format=3 uid="uid://0k8hcna4wuqm"]
+
+[ext_resource type="PackedScene" uid="uid://ch86og1iw24ou" path="res://Main/Player/Tools/toolBase.tscn" id="1_uyx1r"]
+[ext_resource type="Texture2D" uid="uid://boi01k3853jc4" path="res://Assets/Player/Tools/Weapons/bow.png" id="2_eayho"]
+[ext_resource type="Script" uid="uid://ronywtecbbgs" path="res://Main/Player/Tools/Weapons/Bow/bow.gd" id="2_uybs7"]
+[ext_resource type="Texture2D" uid="uid://cv8ixb62dy00w" path="res://Assets/Particles/spark_pixel.png" id="4_ksa7m"]
+[ext_resource type="AudioStream" uid="uid://bp5cw6mykobl" path="res://Assets/SFX/Weapons/Bow/bow_release.wav" id="5_o52g7"]
+[ext_resource type="AudioStream" uid="uid://daswbgkk4587c" path="res://Assets/SFX/Weapons/Bow/bow_reload.wav" id="6_o52g7"]
+[ext_resource type="Texture2D" uid="uid://vwrgh5fx3g85" path="res://icon.svg" id="7_20jgc"]
+[ext_resource type="Texture2D" uid="uid://bkbsx7o580whc" path="res://Assets/HUD/bow_crosshair.png" id="7_i0tho"]
+
+[sub_resource type="Animation" id="Animation_fjb27"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 1.5708)]
+}
+
+[sub_resource type="Animation" id="Animation_23tl8"]
+resource_name = "retrieve"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0, -0.3, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.309, 0, 1.5708), Vector3(0, 0, 1.5708)]
+}
+
+[sub_resource type="Animation" id="Animation_qme8p"]
+resource_name = "save"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_i0tho"]
+_data = {
+&"RESET": SubResource("Animation_fjb27"),
+&"retrieve": SubResource("Animation_23tl8"),
+&"save": SubResource("Animation_qme8p")
+}
+
+[sub_resource type="Animation" id="Animation_20jgc"]
+resource_name = "bow_draw"
+length = 2.0
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.85714),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [0, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D/arrowPath/PathFollow3D:progress_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.142857, 0.285714, 0.428571, 0.571429, 0.714286, 0.857143, 1, 1.14286, 1.28571, 1.42857, 1.57143, 1.71429, 1.85714, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 0.223763, 0.289445, 0.35754, 0.427626, 0.499173, 0.571515, 0.643822, 0.715057, 0.783918, 0.848743, 0.907355, 0.920943, 0.956766, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VFX/sparksVFX:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.285714),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_bg18y"]
+resource_name = "bow_reload"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D/arrowPath/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D/arrowPath/PathFollow3D/arrowMarker:position:z")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.428571, 0.857143),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [-0.2, 0.1, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:rotation_degrees:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.8),
+"transitions": PackedFloat32Array(0.5, 1, 2, 1),
+"update": 0,
+"values": [0.0, -25.0, -25.0, 0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("Sprite3D/arrowPath/PathFollow3D/arrowMarker:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_fvx6n"]
+resource_name = "bow_shoot"
+length = 0.5
+step = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.142857),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [6, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D/arrowPath/PathFollow3D:progress_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.142857, 0.428571),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [1.0, 0.7, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_whanr"]
+_data = {
+&"bow_draw": SubResource("Animation_20jgc"),
+&"bow_reload": SubResource("Animation_bg18y"),
+&"bow_shoot": SubResource("Animation_fvx6n")
+}
+
+[sub_resource type="Curve3D" id="Curve3D_i0tho"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, -0.12, 0, 0, 0, 0, 0, 0, 0, 0, -0.03),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hj63y"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_ksa7m")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_i0tho"]
+material = SubResource("StandardMaterial3D_hj63y")
+size = Vector2(0.01, 0.2)
+orientation = 2
+
+[sub_resource type="Gradient" id="Gradient_20jgc"]
+offsets = PackedFloat32Array(0, 0.589286, 1)
+colors = PackedColorArray(1, 1, 1, 0.588235, 1, 1, 1, 0.588235, 1, 1, 1, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fjb27"]
+material = SubResource("StandardMaterial3D_hj63y")
+size = Vector2(0.01, 0.2)
+orientation = 2
+
+[sub_resource type="Curve" id="Curve_23tl8"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.698473, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_qme8p"]
+offsets = PackedFloat32Array(0, 0.883929, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.784314, 1, 1, 1, 0)
+
+[node name="bow" instance=ExtResource("1_uyx1r")]
+script = ExtResource("2_uybs7")
+
+[node name="AnimationPlayer" parent="." index="1"]
+libraries = {
+&"": SubResource("AnimationLibrary_i0tho"),
+&"bow_animations": SubResource("AnimationLibrary_whanr")
+}
+
+[node name="Sprite3D" parent="." index="2"]
+transform = Transform3D(-3.61999e-06, -1, 0, 1, -3.61999e-06, 0, 0, 0, 1, 0, 0, 0)
+axis = 0
+texture = ExtResource("2_eayho")
+hframes = 7
+
+[node name="arrowPath" type="Path3D" parent="Sprite3D" index="0"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+curve = SubResource("Curve3D_i0tho")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Sprite3D/arrowPath" index="0"]
+transform = Transform3D(-0.999997, 0, -8.74224e-08, 0, 0.999994, 0, 8.74225e-08, 0, -0.999996, 0, 0, -0.03)
+progress = 0.09
+
+[node name="arrowMarker" type="Node3D" parent="Sprite3D/arrowPath/PathFollow3D" index="0"]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.2)
+
+[node name="reloadSFX" type="AudioStreamPlayer3D" parent="Sprite3D/arrowPath/PathFollow3D/arrowMarker" index="0"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1.00001, 0, 1.74846e-07, 0, 1, 1.22392e-08, 0, -0.17)
+stream = ExtResource("6_o52g7")
+volume_db = 3.0
+max_distance = 0.6
+
+[node name="Sprite3D" type="Sprite3D" parent="Sprite3D/arrowPath/PathFollow3D/arrowMarker" index="1"]
+transform = Transform3D(-0.1, 0, 8.74228e-09, 0, 0.1, 0, -8.74228e-09, 0, -0.1, 0, 0, 0)
+visible = false
+texture = ExtResource("7_20jgc")
+
+[node name="VFX" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.063)
+
+[node name="sparksReleaseVFX" type="CPUParticles3D" parent="VFX" index="0"]
+transform = Transform3D(1, 8.74228e-08, -8.74228e-08, -8.74228e-08, -4.37114e-08, -1, -8.74228e-08, 1, -4.37114e-08, 0, 0, 0)
+emitting = false
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.9
+lifetime_randomness = 0.5
+mesh = SubResource("PlaneMesh_i0tho")
+particle_flag_align_y = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+damping_min = 1.0
+damping_max = 3.0
+scale_amount_min = 0.1
+color_ramp = SubResource("Gradient_20jgc")
+
+[node name="sparksVFX" type="CPUParticles3D" parent="VFX" index="1"]
+unique_name_in_owner = true
+transform = Transform3D(1, 8.74228e-08, -8.74228e-08, -8.74228e-08, -4.37114e-08, -1, -8.74228e-08, 1, -4.37114e-08, 0, 0, 0)
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 0.9
+lifetime_randomness = 0.5
+mesh = SubResource("PlaneMesh_fjb27")
+emission_shape = 2
+emission_sphere_radius = 0.6
+particle_flag_align_y = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -3.0
+linear_accel_max = -3.0
+radial_accel_min = -5.0
+radial_accel_max = -5.0
+scale_amount_min = 0.1
+scale_amount_curve = SubResource("Curve_23tl8")
+color_ramp = SubResource("Gradient_qme8p")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." index="4"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch = true
+stretch_shrink = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" index="0"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(320, 180)
+render_target_update_mode = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewportContainer/SubViewport" index="0"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="drawSFX" type="AudioStreamPlayer3D" parent="SFX" index="0"]
+unique_name_in_owner = true
+
+[node name="releaseSFX" type="AudioStreamPlayer3D" parent="SFX" index="1"]
+unique_name_in_owner = true
+stream = ExtResource("5_o52g7")
+volume_db = -20.0
+
+[node name="MarginContainer" type="MarginContainer" parent="." index="6"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="crosshairSprite" type="TextureRect" parent="MarginContainer" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("7_i0tho")
+stretch_mode = 3
+
+[node name="equippedMarkerPosition" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.112242, -0.160477)
+
+[node name="musicRaycast" type="RayCast3D" parent="." index="9"]
+target_position = Vector3(0, 0, -1.5)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

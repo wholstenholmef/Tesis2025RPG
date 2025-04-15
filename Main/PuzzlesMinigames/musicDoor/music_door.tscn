@@ -1,0 +1,167 @@
+[gd_scene load_steps=17 format=4 uid="uid://dxjg3fww3e167"]
+
+[ext_resource type="Script" uid="uid://psgvrma3i7gh" path="res://Main/PuzzlesMinigames/musicDoor/door.gd" id="1_7hjv0"]
+[ext_resource type="PackedScene" uid="uid://deh3g6jxubtj7" path="res://Assets/Level/MusicDoor/music_door.glb" id="2_bt8ya"]
+[ext_resource type="Texture2D" uid="uid://bgbqe4on8pna0" path="res://Assets/Level/MusicDoor/music_door_musicDoor.png" id="3_a005j"]
+[ext_resource type="Texture2D" uid="uid://cho3h1q1rdqc4" path="res://Assets/Particles/smoke1.png" id="4_vm76g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ul1o3"]
+size = Vector3(2.5, 2, 2.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1i2kp"]
+resource_name = "Material.001"
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("3_a005j")
+roughness = 0.5
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_anpf6"]
+_surfaces = [{
+"aabb": AABB(-0.3, -1, -1, 0.6, 2, 2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAD//wAA////////AAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_50vsi"]
+resource_name = "music_door_Cube_001"
+_surfaces = [{
+"aabb": AABB(-0.3, -1, -1, 0.6, 2, 2),
+"attribute_data": PackedByteArray("jnf1eSMWihiOd4oYIxb1eeODnxgdoQp644MKeh2hnxi5d/V5ThaKGLl3ihhOFvV544N0GB2h33njg995HaF0GFChnxgXhAp6F4SfGFChCnpQoXQYF4TfeReEdBhQod95"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_1i2kp"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP///78AAP//AAD/vwAA//////+/AAAAAAAA/78AAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAP+//////////7//////AAD/v///AAD///+///8AAP////8AAP//////////////////AAAAAP////8AAAAAAAD/////AAD///////8AAAAA//8AAAAA//////////8AAP+/AAD//////78AAP//AAD/v/////////+//3/+//9//v//f/7//3/+/////3////9/////f////3//fwAA/38AAP9/AAD/fwAA/3//f/9//3//f/9//3//f/9//z//f/8//3//P/9//z////9/////f////3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_anpf6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7s1gx"]
+resource_name = "Material.001"
+cull_mode = 2
+diffuse_mode = 3
+specular_mode = 1
+albedo_texture = ExtResource("3_a005j")
+roughness = 0.5
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_1ioce"]
+_surfaces = [{
+"aabb": AABB(-0.389971, -1.00182, -1.61563, 0.779942, 2.25, 3.23125),
+"format": 34896613377,
+"index_count": 144,
+"index_data": PackedByteArray("AAAMAAEAAAAUAAwACAABAAwAFAAIAAwADgAAAAEADgAUAAAADgABABUAFAANAAgAFgAOABUAFgAUAA4AAQAJABUAFgAVAAkABAABAAgADQAEAAgAAQAEAAkAFAAXAA0AFAAWABcADQAXAAQABQAWAAkAFwAWAAUABQAJAA8AFwAFAA8ACQAEAA8AFwAPAAQAAgAQAAoACgAQABgAAgADABAAAwAYABAACgAZAAIAGQADAAIACgAYAAsACwAZAAoACwAYABEAGQAaAAMAGgAYAAMAEgAaABkAGAAbABEAGAAaABsACwARABMAEwARABsAGQALAAYABgALABMAGQAGABIAEwAbAAYAEgAHABoAGwAaAAcABgAHABIABgAbAAcA"),
+"lods": [0.188784, PackedByteArray("AAAMAAEACAABAAwAAAANAAwADQAIAAwADgAAAAEADgANAAAABAABAAgADQAEAAgADgABAAkAAQAEAAkADQAOAAUADQAFAAQABQAOAAkACQAEAA8ABQAPAAQABQAJAA8AAgAQAAoACgAQAAsACwACAAoAAgADABAABwAQAAMAAgAHAAMACwAQABEAEAAHABEAEgAHAAIACwARABMABgAHABIAAgAGABIABgARAAcAAgALAAYAEwARAAYABgALABMA"), 0.354416, PackedByteArray("AAAIAAEABQAAAAEAAAAEAAgAAAAFAAQABAABAAgABQABAAkAAQAEAAkABQAJAAQAAgADAAoAAgAHAAMACgADAAsACwACAAoACwADAAcABgAHAAIACwAHAAYAAgALAAYA"), 0.39726, PackedByteArray("AAAEAAEABQABAAQABQAAAAEAAAAFAAQAAgADAAYABgADAAcAAgAHAAMABgAHAAIA"), 0.54816, PackedByteArray("AAAAAAEAAAABAAEAAgADAAMAAgADAAIA")],
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 28,
+"vertex_data": PackedByteArray("/38AAMHDAAD/f///wcMAAP9/AAA9PAAA/3///z08AAD2uP////8AAAhHAAD//wAACEcAAAAAAAAAAP//gBUAAP////9+6gAAAAD//37qAACk5gAATzAAAP//AACAFQAApOb//6/PAAD//wAAfuoAAFoZAACvzwAACEf/////AACk5v//TzAAAPa4//8AAAAAAAAAAIAVAAD2uAAAAAAAAKTmAACvzwAAWhn//6/PAAAAAAAAfuoAAPa4AAD//wAA/////4AVAABaGQAATzAAAFoZ//9PMAAACEf//wAAAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_yqs58"]
+resource_name = "music_door_Cylinder"
+_surfaces = [{
+"aabb": AABB(-0.389971, -1.00182, -1.61563, 0.779942, 2.25, 3.23125),
+"attribute_data": PackedByteArray("/+f/9/8T//f/5/+L/xP/i//n//f/5/+L/xP/i/8T//f/i/+L/2//9/9v//f/T/+L/6v/i/9P/4v/6/8//9//D//3/y//w/8v/8v/9/+r//f/9/8v/9//D//z/xf/0/8//8v/i/+r//f/b/+L/y//9//z/xf/0/8//8v/F//3/y//3/8P/9P/P//L/4v/i/+L/4v/9/9P//f/w/8v//P/F//f/w//6/8//8P/L//r/z//y//3/8v/9/+r/4v/y/+L/6v/9/+L/4v/i//3/4v/9/9v//f/b/+L/0//9//L/xf/T//3/y//i/9P/4v/L//3/y//i//z/xf/w/8v/+v/P//L//f/q/+L/6v/9//L/4v/i/+L/4v/9/+r/4v/b/+L/2//9/9v/4v/9/8v/8v/F//T/z//T//3/y//i/8v//f/T/+L/y//9/8v/4v/y/8X"),
+"format": 34896613399,
+"index_count": 144,
+"index_data": PackedByteArray("AAAYAAIAAAAsABgALQAuAC8ALQAwAC4AGQAxAAwAGQAyADEAMwAaAAgAMwAJABoANAANADUANAA2AA0AEAAPABwADgAPABAADwAOABEAEQAOAB0ADwARADcAOAA5ADoAOAA7ADkAGwADADwAGwABAAMAHgA9ACAAPgA9AB4APQA+AD8APwA+ACEAPQA/AB8ABAAiABIABAAFACIAQABBAEIAQABDAEEAEwBEAEUAEwBGAEQAJABHAAoAJAAjAEcASAALACUASABJAAsAKABKACcASwBKACgASgBLAEwATABLACYASgBMACkATQBOAE8ATQBQAE4AUQAGAAcAUQBSAAYAFgBTABUAFABTABYAUwAUABcAFwAUACsAUwAXACoA"),
+"lods": [0.188784, PackedByteArray("AAAYAAIAAAAZABgAGQAMABgAGQAIAAwAGQAJAAgACQAaAAgACQANABoACQAbAA0AGwADAA0AGwABAAMAEAAPABwADgAPABAADwAOABEAEQAOAB0AHgAfACAAHwAeACEABAAiABIABAAFACIAEgAiABMAEwAiACMAEwAjACQAJAAjAAoACgAjAAsACgALACUAJQALAAcABwALAAYAJgAnACgAJwAmACkAFQAXACoAFQAUABcAFwAUACsAFAAVABYA"), 0.354416, PackedByteArray("AAAMAAIAAAAIAAwAAAAJAAgACQANAAgACQADAA0ACQABAAMADgAPABAADwAOABEABAAFABIAEgAFABMAEwAFAAsAEwALAAoACgALAAcABwALAAYAFAAVABYAFQAUABcA"), 0.39726, PackedByteArray("AAAIAAIAAAAJAAgACQADAAgACQABAAMABAAFAAoACgAFAAsACgALAAcABwALAAYA"), 0.54816, PackedByteArray("AAABAAIAAQADAAIABAAFAAYABAAGAAcA")],
+"material": SubResource("StandardMaterial3D_7s1gx"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 84,
+"vertex_data": PackedByteArray("/38AAMHDte3/fwAAwcO17f9////Bw7Xt/3///8HDte3/fwAAPTwAAP9///89PAAA/3///z08AAD/fwAAPTwAAPa4/////wCACEcAAP//AIAIRwAAAAAAAAAA//+AFQAA/////37qkaQAAP//fuqRpPa4//////+//3///8HD/7//////fuoBwAAA//9+6v+/pOYAAE8wAAD//wAAgBUAAP//AACAFQDA/38AAD08/7+k5gAATzD/vwhHAAAAAP+/pOb//6/Pte3//wAAfuqRpAhH/////wCAWhkAAK/Pte2k5v//r88rwAhH//////+/WhkAAK/P/z///wAAfuq1P/9/AADBw/8/CEcAAP///z+k5v//TzAAAPa4//8AAAAA9rgAAAAAAAAAAAAAgBUAAAAA//+AFbU/pOb//08w0z//f///PTz9P/a4//8AAP8/AAAAAIAVScD2uAAAAAD/v6TmAACvz7XtpOYAAK/PI8n/////fuojyaTm//+vzyPJ//8AAH7qI8n2uP////+RpPa4AAD//5Gk9rgAAP//AIAIRwAA//+RpAhH/////5GkAAAAAH7qkaRaGf//r88rwAAAAAB+6iPJWhn//6/PI8kAAP//fuojyVoZAACvzyPJWhn//6/Pte2k5gAAr8//PwAAAAB+6v4/9rgAAP///z+k5gAATzAAAP////+AFQAA//8AAIAVAACk5v//TzAAAPa4//8AAAAA9rgAAAAAAAD/////gBUAAAhH//8AAAAACEcAAAAAAAAIR///AAAAAP////+AFf8/Whn//08w/z8IR///AAD/PwAAAACAFQAAWhn//08wAABaGQAATzAAAAAA//+AFQAAWhkAAE8wAABaGf//TzAAAFoZAABPMP+//38AAP9/////fwAA/3///8iX/3/Il/9/Nmj/fzZo/3//f////3///////3///5qp/38AAP9///89/31+2f8SgF7+vXyv/2B/yJf/f2TW/38dATqCAAD/fwAA/3/nAIt//38AAP9/AAD/f////3///yfxa4f///9/AAD/f5ASt3YAAP9/AAD/f8iX/3////9/////f///mqm29m9tk/gocV/8z4H///9/kBK3dgAA/3//fwAA/38AAP9/AAD/fwAA/38AAP9/AAD/fwAA/3////9/////f////3///5P4KHH/f////3////9/////f////3///wQC/X4dATqC5wCLf8m4/3/JuP9/ybj/f8m4/39k1v9/ZNb/f2TW/3////9///+aqf//mqlO/1eAhf68gIv/F381R/9/NUf/fzVH/381R/9/Nmj/fzZo/38EAv1+")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_1ioce")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ufsm7"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_vm76g")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0jl54"]
+material = SubResource("StandardMaterial3D_ufsm7")
+orientation = 2
+
+[sub_resource type="Curve" id="Curve_k37or"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.191011, 0.450549), 0.0, 0.0, 0, 0, Vector2(0.432584, 0.32967), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_oxcx3"]
+offsets = PackedFloat32Array(0, 0.713333, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.368627, 0.368627, 0.368627, 1, 0.114897, 0.114897, 0.114897, 0)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qus6g"]
+radius = 2.5
+
+[node name="Door" type="StaticBody3D" groups=["interactable"]]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_7hjv0")
+
+[node name="Marker3D" type="Marker3D" parent="." groups=["camera_target"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+
+[node name="strumVFXPlayer" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_ul1o3")
+
+[node name="music_door" parent="." instance=ExtResource("2_bt8ya")]
+
+[node name="Door" parent="music_door" index="0"]
+mesh = SubResource("ArrayMesh_50vsi")
+
+[node name="Pillars" parent="music_door" index="1"]
+mesh = SubResource("ArrayMesh_yqs58")
+
+[node name="NotePlayer" type="AudioStreamPlayer3D" parent="."]
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.52738, 0)
+emitting = false
+lifetime = 1.23
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.65
+mesh = SubResource("PlaneMesh_0jl54")
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, 1.5, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 3.0
+scale_amount_min = 0.7
+scale_amount_max = 1.3
+scale_amount_curve = SubResource("Curve_k37or")
+color_ramp = SubResource("Gradient_oxcx3")
+
+[node name="Area3D" type="Area3D" parent="."]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_qus6g")
+
+[editable path="music_door"]

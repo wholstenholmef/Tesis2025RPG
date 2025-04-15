@@ -1,0 +1,110 @@
+[gd_scene load_steps=10 format=3 uid="uid://dl6b2ty7bb022"]
+
+[ext_resource type="PackedScene" uid="uid://dxjg3fww3e167" path="res://Main/PuzzlesMinigames/musicDoor/music_door.tscn" id="1_4fobm"]
+[ext_resource type="Script" uid="uid://4fw2jawl5x87" path="res://music_instrument.gd" id="2_tduvn"]
+[ext_resource type="Texture2D" uid="uid://kwlruc3x72o0" path="res://Assets/Player/Tools/Guitar/panflute.png" id="3_fybo7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7gba2"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_w6740"]
+sky_material = SubResource("ProceduralSkyMaterial_7gba2")
+
+[sub_resource type="Environment" id="Environment_nbcwb"]
+background_mode = 2
+sky = SubResource("Sky_w6740")
+tonemap_mode = 2
+
+[sub_resource type="Animation" id="Animation_m0715"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fluteSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fluteSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gopnm"]
+resource_name = "instrument_played"
+length = 0.25
+step = 0.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fluteSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.1, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fluteSprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.2, 1.2, 1.2), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3kjbm"]
+_data = {
+&"RESET": SubResource("Animation_m0715"),
+&"instrument_played": SubResource("Animation_gopnm")
+}
+
+[node name="testMusic" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_nbcwb")
+
+[node name="Door" parent="." instance=ExtResource("1_4fobm")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.67816)
+
+[node name="musicInstrument" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.19401)
+script = ExtResource("2_tduvn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="musicInstrument"]
+libraries = {
+&"": SubResource("AnimationLibrary_3kjbm")
+}
+
+[node name="fluteSprite" type="Sprite3D" parent="musicInstrument"]
+texture_filter = 0
+texture = ExtResource("3_fybo7")
+
+[node name="musicInstrumentPlayer" type="AudioStreamPlayer3D" parent="musicInstrument"]
+
+[connection signal="note_played" from="musicInstrument" to="Door" method="_on_music_instrument_note_played"]

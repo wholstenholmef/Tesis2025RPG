@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://vh7libcpxh44"]
+
+[ext_resource type="Script" uid="uid://1gb4jamlj8sv" path="res://Main/HUD/pauseMenu/pause_button_margin.gd" id="1_rswxu"]
+[ext_resource type="Texture2D" uid="uid://ckt66bnlijet4" path="res://Assets/HUD/pause_buttons/pause_button_line.png" id="2_ej5nk"]
+
+[node name="pauseButtonMargin" type="MarginContainer"]
+custom_minimum_size = Vector2(64, 64)
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 0
+script = ExtResource("1_rswxu")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 2
+texture = ExtResource("2_ej5nk")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

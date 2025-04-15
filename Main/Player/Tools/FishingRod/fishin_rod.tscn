@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://6scit5pwmjh8"]
+
+[ext_resource type="PackedScene" uid="uid://ch86og1iw24ou" path="res://Main/Player/Tools/toolBase.tscn" id="1_3en65"]
+[ext_resource type="Texture2D" uid="uid://uvskgtup5ed2" path="res://Assets/Player/Tools/fishing_rod/rod_stick.png" id="2_v2hfi"]
+[ext_resource type="Texture2D" uid="uid://dbhui2c3xaqq3" path="res://Assets/Player/Tools/fishing_rod/string.png" id="3_rf2el"]
+[ext_resource type="Texture2D" uid="uid://bxvfajgcfn1ex" path="res://Assets/Player/Tools/fishing_rod/bobber.png" id="4_703k2"]
+[ext_resource type="Texture2D" uid="uid://svgv8efo1356" path="res://Assets/Player/Tools/fishing_rod/handle.png" id="5_v2hfi"]
+
+[node name="ToolBase" instance=ExtResource("1_3en65")]
+
+[node name="Sprite3D" parent="." index="1"]
+axis = 0
+texture_filter = 0
+texture = ExtResource("2_v2hfi")
+
+[node name="lineMarker" type="Marker3D" parent="Sprite3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000645742, 0.0902556, -0.0859842)
+visible = false
+
+[node name="lineSprite1" type="Sprite3D" parent="Sprite3D/lineMarker" index="0"]
+offset = Vector2(0, -5)
+modulate = Color(1, 1, 1, 0.588235)
+texture = ExtResource("3_rf2el")
+
+[node name="lineSprite2" type="Sprite3D" parent="Sprite3D/lineMarker" index="1"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+offset = Vector2(0, -5)
+modulate = Color(1, 1, 1, 0.588235)
+texture = ExtResource("3_rf2el")
+
+[node name="Marker3D" type="Marker3D" parent="Sprite3D/lineMarker" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.14324, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Sprite3D/lineMarker/Marker3D" index="0"]
+billboard = 2
+texture_filter = 0
+texture = ExtResource("4_703k2")
+
+[node name="handleMarker" type="Marker3D" parent="Sprite3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0035193, -0.0272424, 0.000716425)
+
+[node name="Sprite3D" type="Sprite3D" parent="Sprite3D/handleMarker" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0213856, 0)
+offset = Vector2(-2.5, 0)
+axis = 1
+texture = ExtResource("5_v2hfi")
+
+[node name="Sprite3D2" type="Sprite3D" parent="Sprite3D/handleMarker" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0213856, 0)
+offset = Vector2(-2.5, 0)
+axis = 1
+texture = ExtResource("5_v2hfi")

@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://5g8mqppk2yer"]
+
+[ext_resource type="Script" uid="uid://2mhih253jl1d" path="res://Main/loadingNode/loading_node.gd" id="1_2k282"]
+[ext_resource type="PackedScene" uid="uid://dawswswaw00ra" path="res://Main/HUD/ConfigurationMenu/configurationMenu.tscn" id="2_kev32"]
+
+[node name="LoadingNode" type="Node"]
+script = ExtResource("1_2k282")
+main_scene_to_load = ExtResource("2_kev32")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+alignment = 2
+
+[node name="SaveFileLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(270, 24)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+bbcode_enabled = true
+text = "archivo de guardado cargado"
+fit_content = true
+scroll_active = false
+tab_size = 5
+
+[node name="loadingLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(128, 24)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+bbcode_enabled = true
+text = "[wave]Cargando..."
+fit_content = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyjqsxjx7xnds"]
+
+[ext_resource type="PackedScene" uid="uid://c641bnuftvrx1" path="res://Main/HUD/ConfigurationMenu/ConfigurationCategories/configurationCategoryBase.tscn" id="1_v4odl"]
+[ext_resource type="PackedScene" uid="uid://bc1a6lahvt80r" path="res://Main/HUD/menu_button/menu_button_check.tscn" id="2_xnw4n"]
+[ext_resource type="PackedScene" uid="uid://bd6ta3p2o4b3r" path="res://Main/HUD/menu_button/option_buttons/menu_button_volume.tscn" id="3_3ple0"]
+
+[node name="volumeConfigCategory" instance=ExtResource("1_v4odl")]
+custom_minimum_size = Vector2(640, 360)
+category_name = "volumen"
+
+[node name="checkButton" parent="ScrollContainer/buttonContainer" index="0" instance=ExtResource("2_xnw4n")]
+layout_mode = 2
+global_var_reference = "sound_mute"
+button_text = "Silenciar volumen"
+
+[node name="menuButtonVolume" parent="ScrollContainer/buttonContainer" index="1" instance=ExtResource("3_3ple0")]
+layout_mode = 2
+button_text = "Volumen maestro"
+
+[node name="menuButtonVolume2" parent="ScrollContainer/buttonContainer" index="2" instance=ExtResource("3_3ple0")]
+layout_mode = 2
+selected_audio_channel = "Music"
+button_text = "Volumen musica"
+
+[node name="menuButtonVolume3" parent="ScrollContainer/buttonContainer" index="3" instance=ExtResource("3_3ple0")]
+layout_mode = 2
+selected_audio_channel = "SFX"
+button_text = "Volumen efectos"

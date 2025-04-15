@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dg2s45mvg1bl2"]
+
+[ext_resource type="Script" uid="uid://5oa2cqnhx5m5" path="res://Main/HUD/menu_button/menu_category_button.gd" id="1_awm53"]
+[ext_resource type="Texture2D" uid="uid://dfchyu4uvt74n" path="res://Assets/HUD/Icons/musicOn.png" id="2_3gkyw"]
+[ext_resource type="Theme" uid="uid://cfmgf0quvx1bf" path="res://Assets/theme/custom_theme.tres" id="2_ohyje"]
+
+[node name="MenuCategoryButton" type="MarginContainer"]
+script = ExtResource("1_awm53")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+theme = ExtResource("2_ohyje")
+flat = true
+
+[node name="Icon" type="TextureRect" parent="."]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_3gkyw")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

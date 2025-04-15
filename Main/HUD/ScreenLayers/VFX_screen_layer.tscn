@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://bciylw13k2ygu"]
+
+[ext_resource type="Texture2D" uid="uid://biwmye56dvn6t" path="res://Assets/Particles/water_drop.png" id="1_2ko60"]
+[ext_resource type="Script" uid="uid://ccx08un0umlwd" path="res://Main/HUD/ScreenLayers/vfx_screen_layer.gd" id="1_60nli"]
+[ext_resource type="SpriteFrames" uid="uid://qi6gjfyjr6ro" path="res://Main/HUD/ScreenLayers/screen_VFX_animations.tres" id="3_tpl21"]
+
+[sub_resource type="Gradient" id="Gradient_3248n"]
+offsets = PackedFloat32Array(0, 0.455645, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="VFXScreenLayer" type="CanvasLayer"]
+layer = 99
+script = ExtResource("1_60nli")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch = true
+stretch_shrink = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+canvas_item_default_texture_filter = 0
+size = Vector2i(320, 180)
+render_target_update_mode = 4
+
+[node name="flashTexture" type="ColorRect" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.500095, 0.500095, 0.500095, 0)
+
+[node name="dropletsEffect" type="CPUParticles2D" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+position = Vector2(160, 90)
+emitting = false
+amount = 24
+texture = ExtResource("1_2ko60")
+emission_shape = 3
+emission_rect_extents = Vector2(160, 90)
+linear_accel_min = -1000.0
+scale_amount_min = 0.5
+scale_amount_max = 1.5
+color = Color(1, 1, 1, 0.784314)
+color_ramp = SubResource("Gradient_3248n")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SubViewportContainer/SubViewport"]
+visible = false
+sprite_frames = ExtResource("3_tpl21")
+animation = &"sword_slash"

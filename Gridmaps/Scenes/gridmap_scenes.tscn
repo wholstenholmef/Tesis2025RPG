@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=4 uid="uid://dh253d6l8rsks"]
+
+[ext_resource type="Texture2D" uid="uid://djcpylawvd4gi" path="res://Assets/Level/FishingPuddle/fishing_puddle1.png" id="1_l1nq7"]
+[ext_resource type="Texture2D" uid="uid://bgbqe4on8pna0" path="res://Assets/Level/MusicDoor/music_door_musicDoor.png" id="2_8cmyl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_51lh7"]
+transparency = 1
+albedo_texture = ExtResource("1_l1nq7")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_excye"]
+material = SubResource("StandardMaterial3D_51lh7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w2ys5"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_texture = ExtResource("2_8cmyl")
+roughness = 0.5
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_lf6fa"]
+_surfaces = [{
+"aabb": AABB(-0.3, -1, -1, 0.6, 2, 2),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAACAAEAAwAEAAEABQAAAAIAAwAAAAUABAAGAAIABQACAAYAAwAHAAQAAwAFAAcABwAGAAQABwAFAAYA"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("AAAAAP//AAAAAP//AAAAAAAA/////wAAAAAAAAAAAAD/////AAAAAP//AAD//wAA////////AAD//wAAAAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_4o27l"]
+resource_name = "music_door_Cube_001"
+_surfaces = [{
+"aabb": AABB(-0.3, -1, -1, 0.6, 2, 2),
+"attribute_data": PackedByteArray("jnf1eSMWihiOd4oYIxb1eeODnxgdoQp644MKeh2hnxi5d/V5ThaKGLl3ihhOFvV544N0GB2h33njg995HaF0GFChnxgXhAp6F4SfGFChCnpQoXQYF4TfeReEdBhQod95"),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
+"material": SubResource("StandardMaterial3D_w2ys5"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("AAAAAP///78AAP//AAD/vwAA//////+/AAAAAAAA/78AAAAAAAD///////8AAP//AAD//wAA/////wAAAAD/////AAAAAP+//////////7//////AAD/v///AAD///+///8AAP////8AAP//////////////////AAAAAP////8AAAAAAAD/////AAD///////8AAAAA//8AAAAA//////////8AAP+/AAD//////78AAP//AAD/v/////////+//3/+//9//v//f/7//3/+/////3////9/////f////3//fwAA/38AAP9/AAD/fwAA/3//f/9//3//f/9//3//f/9//z//f/8//3//P/9//z////9/////f////3////9/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_lf6fa")
+
+[node name="GridmapScenes" type="Node3D"]
+
+[node name="puddleMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.95, 0)
+mesh = SubResource("PlaneMesh_excye")
+
+[node name="musicDoorMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_4o27l")
+skeleton = NodePath("")

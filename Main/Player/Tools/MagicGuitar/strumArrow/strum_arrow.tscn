@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://lj0w4qpu5pie"]
+
+[ext_resource type="Texture2D" uid="uid://oiuqwiuwte33" path="res://Assets/Player/Tools/Icons/guitar_arrow.png" id="1_00yyj"]
+
+[node name="strumArrow" type="TextureRect"]
+offset_right = 24.0
+offset_bottom = 24.0
+pivot_offset = Vector2(12, 12)
+texture = ExtResource("1_00yyj")

@@ -1,0 +1,81 @@
+[gd_scene load_steps=14 format=3 uid="uid://b7fjqsoumjw1r"]
+
+[ext_resource type="Texture2D" uid="uid://jhlcqaaux5v5" path="res://Assets/Level/stone_floor.png" id="1_p6jxm"]
+[ext_resource type="Texture2D" uid="uid://xnf8d7vpg0xx" path="res://Assets/Level/River/river_animation.tres" id="2_dgugc"]
+[ext_resource type="Texture2D" uid="uid://bkt1608wxbh8" path="res://Assets/Level/grass_floor.png" id="3_ert4d"]
+[ext_resource type="PackedScene" uid="uid://dyyv6m7hxeats" path="res://Assets/Level/WoodDock/wood_dock.glb" id="4_dgugc"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vjlm6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3cl0a"]
+albedo_color = Color(0.719076, 0.719076, 0.719076, 1)
+albedo_texture = ExtResource("1_p6jxm")
+texture_filter = 0
+texture_repeat = false
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_v1ehx"]
+points = PackedVector3Array(-1, 0, -1, -1, 0, 1, 1, 0, -1, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3qn2r"]
+albedo_texture = ExtResource("2_dgugc")
+texture_filter = 0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_pgmxg"]
+material = SubResource("StandardMaterial3D_3qn2r")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_686iv"]
+points = PackedVector3Array(-1, 0, -1, -1, 0, 1, 1, 0, -1, 1, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kq14l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gwfdr"]
+albedo_color = Color(0.719076, 0.719076, 0.719076, 1)
+albedo_texture = ExtResource("3_ert4d")
+texture_filter = 0
+texture_repeat = false
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hib6f"]
+points = PackedVector3Array(-1, 0, -1, -1, 0, 1, 1, 0, -1, 1, 0, 1)
+
+[node name="GridmapFloors" type="Node3D"]
+
+[node name="stoneFloorMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("PlaneMesh_vjlm6")
+surface_material_override/0 = SubResource("StandardMaterial3D_3cl0a")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="stoneFloorMesh"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="stoneFloorMesh/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_v1ehx")
+
+[node name="riverFloorMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("PlaneMesh_pgmxg")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="riverFloorMesh"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="riverFloorMesh/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_686iv")
+
+[node name="grassFloorMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = SubResource("PlaneMesh_kq14l")
+surface_material_override/0 = SubResource("StandardMaterial3D_gwfdr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="grassFloorMesh"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="grassFloorMesh/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_hib6f")
+
+[node name="wood_dock" parent="." instance=ExtResource("4_dgugc")]
+
+[node name="Dock" parent="wood_dock" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.16634, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="wood_dock/Dock" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wood_dock/Dock/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_686iv")
+
+[editable path="wood_dock"]

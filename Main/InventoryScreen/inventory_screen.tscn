@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=3 uid="uid://3stwaswx2xj0"]
 
-[ext_resource type="Script" path="res://Main/InventoryScreen/inventory_screen.gd" id="1_nyhws"]
+[ext_resource type="Script" uid="uid://b2sy7gb707wl5" path="res://Main/InventoryScreen/inventory_screen.gd" id="1_nyhws"]
 [ext_resource type="PackedScene" uid="uid://52p8ece1qk6q" path="res://Main/Nodes/swipe_node/swipe_node.tscn" id="2_7gmor"]
-[ext_resource type="Shader" path="res://shaders/Dither.gdshader" id="3_ykv35"]
-[ext_resource type="MeshLibrary" uid="uid://d2o2eks8m65m5" path="res://dungeon_gridmap.tres" id="4_7b63m"]
+[ext_resource type="Shader" uid="uid://ch73ju5du0o0b" path="res://shaders/Dither.gdshader" id="3_ykv35"]
+[ext_resource type="MeshLibrary" uid="uid://d2o2eks8m65m5" path="res://Gridmaps/level_gridmap.tres" id="4_7b63m"]
 [ext_resource type="PackedScene" uid="uid://be20mkkqhpo2b" path="res://Main/InventoryScreen/Items/base_item.tscn" id="5_8cp06"]
-[ext_resource type="Texture2D" uid="uid://b12p8wdnimno5" path="res://Assets/HUD/9patchalpha.png" id="6_31sio"]
+[ext_resource type="Texture2D" uid="uid://b12p8wdnimno5" path="res://Assets/HUD/9Patch/9patchalpha.png" id="6_31sio"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g2ts0"]
 shader = ExtResource("3_ykv35")

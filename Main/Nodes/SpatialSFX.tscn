@@ -1,6 +1,17 @@
-[gd_scene format=3 uid="uid://dpmd3eb0pbru4"]
+[gd_scene load_steps=3 format=3 uid="uid://dpmd3eb0pbru4"]
+
+[ext_resource type="Script" uid="uid://m0rsjp208tck" path="res://Main/Nodes/spatial_sfx.gd" id="1_4bxor"]
+[ext_resource type="Texture2D" uid="uid://bnb6tdjmv3ei2" path="res://Assets/HUD/Icons/audioOn.png" id="2_d1nkn"]
 
 [node name="SpatialSfx" type="AudioStreamPlayer3D"]
-volume_db = -30.0
 autoplay = true
-max_distance = 4.0
+max_distance = 1.0
+bus = &"SFX"
+script = ExtResource("1_4bxor")
+
+[node name="debugSprite" type="Sprite3D" parent="."]
+billboard = 1
+texture_filter = 0
+texture = ExtResource("2_d1nkn")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

@@ -1,0 +1,96 @@
+[gd_scene load_steps=10 format=3 uid="uid://cxthjp8bv3nwo"]
+
+[ext_resource type="PackedScene" uid="uid://clfby8nxdtwj8" path="res://Main/Enemies/enemyBase.tscn" id="1_05lfj"]
+[ext_resource type="Texture2D" uid="uid://qac3lp7fge4o" path="res://Assets/Enemies/mosquito_sheet.png" id="2_j0yxn"]
+
+[sub_resource type="Animation" id="Animation_fy32k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="Animation" id="Animation_gefwb"]
+resource_name = "default"
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.05, 0), Vector3(0, 0, 0), Vector3(0, -0.05, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yf3x0"]
+_data = {
+&"RESET": SubResource("Animation_fy32k"),
+&"default": SubResource("Animation_gefwb")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40ioo"]
+atlas = ExtResource("2_j0yxn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdbjb"]
+atlas = ExtResource("2_j0yxn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75ldd"]
+atlas = ExtResource("2_j0yxn")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_frsld"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40ioo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdbjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75ldd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 15.0
+}]
+
+[node name="EnemyBase" instance=ExtResource("1_05lfj")]
+
+[node name="AnimationPlayer" parent="." index="0"]
+libraries = {
+&"": SubResource("AnimationLibrary_yf3x0")
+}
+
+[node name="AnimatedSprite3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0428659, 0)
+billboard = 2
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_frsld")
+animation = &"idle"
+frame_progress = 0.135125

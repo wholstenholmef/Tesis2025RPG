@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ceh8thvnobr8m"]
+
+[ext_resource type="PackedScene" uid="uid://ch86og1iw24ou" path="res://Main/Player/Tools/toolBase.tscn" id="1_nsaqq"]
+[ext_resource type="Texture2D" uid="uid://cq7kdb0j5ukxx" path="res://Assets/Player/Tools/Weapons/sword.png" id="2_7lgji"]
+
+[node name="Sword" instance=ExtResource("1_nsaqq")]
+
+[node name="Sprite3D" parent="." index="2"]
+transform = Transform3D(0.336824, -0.0593912, -0.939693, 0.173648, 0.984808, 0, 0.925417, -0.163176, 0.34202, 0, 0, 0)
+texture = ExtResource("2_7lgji")
+
+[node name="equippedMarkerPosition" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.095, -0.01, -0.16)

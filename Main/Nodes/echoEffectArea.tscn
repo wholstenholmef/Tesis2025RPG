@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bvn35ehm2bv3w"]
+
+[ext_resource type="Script" uid="uid://dkearq8pygohf" path="res://Main/Nodes/echo_effect_area.gd" id="1_eegoq"]
+
+[node name="EchoEffectArea" type="Area3D"]
+reverb_bus_enabled = true
+reverb_bus_amount = 0.5
+script = ExtResource("1_eegoq")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

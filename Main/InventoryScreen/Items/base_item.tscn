@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://be20mkkqhpo2b"]
 
-[ext_resource type="Texture2D" uid="uid://cq7kdb0j5ukxx" path="res://Assets/Player/sword.png" id="1_7admj"]
-[ext_resource type="Script" path="res://Main/InventoryScreen/Items/base_item.gd" id="1_xivsp"]
+[ext_resource type="Texture2D" uid="uid://cq7kdb0j5ukxx" path="res://Assets/Player/Tools/Weapons/sword.png" id="1_7admj"]
+[ext_resource type="Script" uid="uid://rmg2copib3uj" path="res://Main/InventoryScreen/Items/base_item.gd" id="1_xivsp"]
 
 [sub_resource type="Animation" id="Animation_eegxg"]
 length = 0.001
@@ -38,8 +38,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_318n0"]
 _data = {
-"RESET": SubResource("Animation_eegxg"),
-"loop": SubResource("Animation_rv3dd")
+&"RESET": SubResource("Animation_eegxg"),
+&"loop": SubResource("Animation_rv3dd")
 }
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rnlck"]
@@ -58,7 +58,7 @@ texture = ExtResource("1_7admj")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_318n0")
+&"": SubResource("AnimationLibrary_318n0")
 }
 autoplay = "loop"
 

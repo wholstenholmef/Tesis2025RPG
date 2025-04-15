@@ -1,0 +1,187 @@
+[gd_scene load_steps=10 format=3 uid="uid://dawswswaw00ra"]
+
+[ext_resource type="Script" uid="uid://c7ebleaadryif" path="res://Main/HUD/ConfigurationMenu/configuration_menu.gd" id="1_5mufg"]
+[ext_resource type="PackedScene" uid="uid://b0wjtof1l0rdd" path="res://Main/HUD/ConfigurationMenu/ConfigurationCategories/narrator_config_category.tscn" id="2_2ukfo"]
+[ext_resource type="Texture2D" uid="uid://2qjm871ppthx" path="res://Assets/HUD/Icons/narrator.png" id="3_5mufg"]
+
+[sub_resource type="Animation" id="Animation_phfju"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("backgroundLayer/background:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ywpkf"]
+resource_name = "close"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.5), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("backgroundLayer/background:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0.588235), Color(1, 1, 1, 0.336134), Color(1, 1, 1, 0.168067), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gbmh8"]
+resource_name = "open"
+length = 0.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SubViewportContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.5), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("backgroundLayer/background:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.05, 0.15, 0.25, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.168067), Color(1, 1, 1, 0.336134), Color(1, 1, 1, 0.588235)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1l2wc"]
+_data = {
+&"RESET": SubResource("Animation_phfju"),
+&"close": SubResource("Animation_ywpkf"),
+&"open": SubResource("Animation_gbmh8")
+}
+
+[sub_resource type="Gradient" id="Gradient_5mufg"]
+offsets = PackedFloat32Array(0.261111, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2ukfo"]
+gradient = SubResource("Gradient_5mufg")
+
+[node name="configurationMenuLayer" type="CanvasLayer"]
+process_mode = 3
+layer = 100
+follow_viewport_enabled = true
+script = ExtResource("1_5mufg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1l2wc")
+}
+
+[node name="backgroundLayer" type="CanvasLayer" parent="."]
+layer = 97
+
+[node name="background" type="ColorRect" parent="backgroundLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.392157)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+anchor_mode = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 7.5
+
+[node name="CanvasLayer" type="CanvasLayer" parent="SubViewportContainer/SubViewport"]
+
+[node name="Control" type="MarginContainer" parent="SubViewportContainer/SubViewport/CanvasLayer"]
+custom_minimum_size = Vector2(640, 64)
+offset_right = 640.0
+offset_bottom = 64.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_right = 64
+
+[node name="gradientBackground" type="TextureRect" parent="SubViewportContainer/SubViewport/CanvasLayer/Control"]
+layout_mode = 2
+texture = SubResource("GradientTexture1D_2ukfo")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="SubViewportContainer/SubViewport/CanvasLayer/Control"]
+layout_mode = 2
+
+[node name="configurationIconsContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport/CanvasLayer/Control/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="configurationNameLabel" type="Label" parent="SubViewportContainer/SubViewport/CanvasLayer/Control"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/outline_size = 32
+theme_override_font_sizes/font_size = 32
+text = "dsadasd"
+
+[node name="CategoryTabContainer" type="HBoxContainer" parent="SubViewportContainer/SubViewport"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(640, 0)
+offset_top = 72.0
+offset_right = 1928.0
+offset_bottom = 360.0
+size_flags_horizontal = 0
+
+[node name="narratorConfiguration" parent="SubViewportContainer/SubViewport/CategoryTabContainer" instance=ExtResource("2_2ukfo")]
+layout_mode = 2
+category_icon = ExtResource("3_5mufg")

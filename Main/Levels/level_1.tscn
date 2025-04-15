@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://gotchx28e0l1"]
+
+[ext_resource type="PackedScene" uid="uid://boafjv07533ld" path="res://Main/Levels/level_base.tscn" id="1_y0bi1"]
+[ext_resource type="Script" uid="uid://7aty557doylj" path="res://Gridmaps/scenes_grid_map.gd" id="2_vk6df"]
+
+[node name="Level1" instance=ExtResource("1_y0bi1")]
+
+[node name="GeometryGridMap" parent="." index="4"]
+data = {
+"cells": PackedInt32Array(65529, 65526, 4, 65529, 65528, 4, 65530, 65528, 4, 65531, 65528, 4, 65533, 65528, 4, 0, 65528, 1048579, 1, 65533, 1048576, 2, 65533, 1048576, 3, 65533, 1048576, 3, 65534, 1048576, 3, 65535, 1048576)
+}
+
+[node name="floorGridMap" parent="." index="5"]
+data = {
+"cells": PackedInt32Array(0, 0, 0, 65535, 0, 0, 65535, 65535, 0, 0, 65535, 0, 65535, 65534, 0, 0, 65534, 0, 1, 0, 0, 1, 65535, 0, 1, 65534, 0, 65535, 1, 0, 0, 1, 0, 1, 1, 0, 0, 2, 0, 65535, 2, 0, 1, 2, 0, 65534, 65534, 0, 65534, 65535, 0, 65534, 0, 0, 65534, 1, 0, 65534, 2, 0, 2, 2, 0, 2, 1, 0, 2, 0, 0, 2, 65535, 0, 2, 65534, 0, 0, 65533, 0, 0, 65532, 0, 0, 65531, 2, 0, 65530, 2, 0, 65529, 2, 0, 65528, 2, 0, 65527, 1048577, 65535, 65527, 1048577, 65534, 65527, 1048577, 65533, 65527, 1048577, 1, 65527, 1048577, 2, 65527, 1048577)
+}
+
+[node name="ScenesGridMap" parent="." index="6"]
+data = {
+"cells": PackedInt32Array(0, 65531, 1048577)
+}
+script = ExtResource("2_vk6df")

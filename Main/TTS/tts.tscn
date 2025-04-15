@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ya3spo1ygyns"]
+
+[ext_resource type="Script" uid="uid://b6q7xhkamhf2b" path="res://Main/TTS/tts.gd" id="1_se6nj"]
+
+[node name="TTS" type="Node"]
+script = ExtResource("1_se6nj")

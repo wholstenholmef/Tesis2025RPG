@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4wgk5rw8xxee"]
+
+[ext_resource type="Script" uid="uid://bggwolryuyyjl" path="res://Main/Player/Tools/ToolArea/tool_area_node.gd" id="1_kqays"]
+
+[node name="ToolAreaNode" type="Area3D"]
+script = ExtResource("1_kqays")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]

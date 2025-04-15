@@ -1,0 +1,292 @@
+[gd_scene load_steps=17 format=3 uid="uid://biahwp1lhhnbb"]
+
+[ext_resource type="PackedScene" uid="uid://c7gl3p14kbnd" path="res://Main/worldViewport.tscn" id="1_1urte"]
+[ext_resource type="Script" uid="uid://jqnqonvxg7pa" path="res://Main/main.gd" id="1_prna7"]
+[ext_resource type="Texture2D" uid="uid://cplbf11758uri" path="res://Assets/HUD/9Patch/9patchalpha2x.png" id="3_dlb68"]
+[ext_resource type="PackedScene" uid="uid://dka7rurpof1am" path="res://Main/HUD/MessageLog/message_log_node.tscn" id="3_prna7"]
+[ext_resource type="Shader" uid="uid://m5j1yaw3r8km" path="res://shaders/circle_mask.gdshader" id="3_vo5rm"]
+[ext_resource type="Texture2D" uid="uid://do8sxft0hv2hw" path="res://Assets/HUD/Buttons/log_button.png" id="5_f8d13"]
+[ext_resource type="PackedScene" uid="uid://cya34q1kmryo" path="res://Main/HUD/pauseMenu/pause_menu_layer.tscn" id="5_hhycs"]
+[ext_resource type="Texture2D" uid="uid://d0t2qmr2rrvkv" path="res://Assets/HUD/Buttons/backpack_button.png" id="6_7g2vh"]
+[ext_resource type="Texture2D" uid="uid://cuw0sbudwe77u" path="res://Assets/HUD/Buttons/move_button.png" id="8_bnhc1"]
+[ext_resource type="Script" uid="uid://dbvljf3ytgptn" path="res://Main/MinimapCamera/minimap_camera.gd" id="10_6pjay"]
+
+[sub_resource type="Animation" id="Animation_hhycs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("contentMargin:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(832, 360)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("contentMargin/HBoxContainer/worldViewportMargin/worldViewport:custom_minimum_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(640, 360)]
+}
+
+[sub_resource type="Animation" id="Animation_lvlj0"]
+resource_name = "hide_chat_log"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("contentMargin:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(640, 360), Vector2(832, 360)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("contentMargin/HBoxContainer/worldViewportMargin/worldViewport:custom_minimum_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(448, 252), Vector2(640, 360)]
+}
+
+[sub_resource type="Animation" id="Animation_f8d13"]
+resource_name = "show_chat_log"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("contentMargin:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(832, 360), Vector2(640, 360)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("contentMargin/HBoxContainer/worldViewportMargin/worldViewport:custom_minimum_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(640, 360), Vector2(448, 252)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hhycs"]
+_data = {
+&"RESET": SubResource("Animation_hhycs"),
+&"hide_chat_log": SubResource("Animation_lvlj0"),
+&"show_chat_log": SubResource("Animation_f8d13")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r3hox"]
+shader = ExtResource("3_vo5rm")
+shader_parameter/radius = 1.0
+
+[sub_resource type="Environment" id="Environment_aru0x"]
+background_energy_multiplier = 0.0
+ambient_light_source = 1
+reflected_light_source = 1
+
+[node name="Main" type="Node"]
+script = ExtResource("1_prna7")
+metadata/_edit_vertical_guides_ = [448.0, 640.0, 448.0]
+metadata/_edit_horizontal_guides_ = [252.0, 360.0]
+
+[node name="BackgroundColor" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hhycs")
+}
+
+[node name="contentMargin" type="MarginContainer" parent="."]
+offset_right = 832.0
+offset_bottom = 360.0
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="contentMargin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="worldViewportMargin" type="MarginContainer" parent="contentMargin/HBoxContainer"]
+custom_minimum_size = Vector2(448, 0)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="worldViewport" parent="contentMargin/HBoxContainer/worldViewportMargin" instance=ExtResource("1_1urte")]
+custom_minimum_size = Vector2(640, 360)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 2
+stretch_shrink = 3
+
+[node name="NinePatchRect" type="NinePatchRect" parent="contentMargin/HBoxContainer/worldViewportMargin"]
+layout_mode = 2
+texture = ExtResource("3_dlb68")
+patch_margin_left = 32
+patch_margin_top = 32
+patch_margin_right = 32
+patch_margin_bottom = 32
+
+[node name="messageLogNode" parent="contentMargin/HBoxContainer" instance=ExtResource("3_prna7")]
+layout_mode = 2
+
+[node name="ScreenMargin" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+metadata/_edit_lock_ = true
+
+[node name="MinimapMargin" type="MarginContainer" parent="ScreenMargin"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="minimapViewportContainer" type="SubViewportContainer" parent="ScreenMargin/MinimapMargin"]
+material = SubResource("ShaderMaterial_r3hox")
+layout_mode = 2
+mouse_filter = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="ScreenMargin/MinimapMargin/minimapViewportContainer"]
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+size = Vector2i(96, 96)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="ScreenMargin/MinimapMargin/minimapViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 1, 3.98, 0)
+environment = SubResource("Environment_aru0x")
+projection = 1
+current = true
+size = 10.0
+script = ExtResource("10_6pjay")
+
+[node name="inventoryButtonMargin" type="MarginContainer" parent="ScreenMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="inventoryButtonTexture" type="TextureRect" parent="ScreenMargin/inventoryButtonMargin"]
+layout_mode = 2
+texture = ExtResource("6_7g2vh")
+
+[node name="MarginContainer" type="MarginContainer" parent="ScreenMargin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 116
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 40
+
+[node name="Control" type="Control" parent="ScreenMargin/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="ScreenMargin/MarginContainer/Control"]
+position = Vector2(-96, -32)
+scale = Vector2(2, 2)
+texture_normal = ExtResource("8_bnhc1")
+action = "left"
+visibility_mode = 1
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="ScreenMargin/MarginContainer/Control"]
+position = Vector2(96, -32)
+scale = Vector2(-2, 2)
+texture_normal = ExtResource("8_bnhc1")
+shape_visible = false
+action = "right"
+visibility_mode = 1
+
+[node name="TouchScreenButton3" type="TouchScreenButton" parent="ScreenMargin/MarginContainer/Control"]
+position = Vector2(-32, -96)
+rotation = -4.71238
+scale = Vector2(2, -2)
+texture_normal = ExtResource("8_bnhc1")
+shape_visible = false
+action = "forward"
+visibility_mode = 1
+
+[node name="TouchScreenButton4" type="TouchScreenButton" parent="ScreenMargin/MarginContainer/Control"]
+position = Vector2(32, 32)
+rotation = -1.57079
+scale = Vector2(2, -2)
+texture_normal = ExtResource("8_bnhc1")
+shape_visible = false
+action = "back"
+visibility_mode = 1
+
+[node name="displayLogLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="LogButtonMargin" type="MarginContainer" parent="displayLogLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 528.0
+offset_top = 248.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_filter = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="logButtonTexture" type="TextureRect" parent="displayLogLayer/LogButtonMargin"]
+layout_mode = 2
+texture = ExtResource("5_f8d13")
+
+[node name="pauseMenuLayer" parent="." instance=ExtResource("5_hhycs")]
+
+[connection signal="gui_input" from="ScreenMargin/inventoryButtonMargin" to="." method="_on_inventory_button_margin_gui_input"]
+[connection signal="gui_input" from="displayLogLayer/LogButtonMargin" to="." method="_on_log_button_margin_gui_input"]

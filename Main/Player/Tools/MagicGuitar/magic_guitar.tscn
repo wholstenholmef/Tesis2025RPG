@@ -1,0 +1,183 @@
+[gd_scene load_steps=8 format=3 uid="uid://b6mq7x2q66ngv"]
+
+[ext_resource type="PackedScene" uid="uid://ch86og1iw24ou" path="res://Main/Player/Tools/toolBase.tscn" id="1_r4bo4"]
+[ext_resource type="Texture2D" uid="uid://4n78jhfloih4" path="res://Assets/Player/Tools/Guitar/guitar.png" id="2_da6we"]
+[ext_resource type="Script" uid="uid://d05n3au3kfubb" path="res://Main/Player/Tools/MagicGuitar/magic_guitar.gd" id="2_o6b2r"]
+
+[sub_resource type="Animation" id="Animation_r4bo4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.38498e-08, -3.14159, 1.309)]
+}
+
+[sub_resource type="Animation" id="Animation_da6we"]
+resource_name = "retrieve"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [Vector3(0, -0.1, 0), Vector3(0, 0.1, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector3(0, -3.14159, -1.8326), Vector3(9.42478, -3.14159, -1.8326)]
+}
+
+[sub_resource type="Animation" id="Animation_o6b2r"]
+resource_name = "save"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_amh4i"]
+_data = {
+&"RESET": SubResource("Animation_r4bo4"),
+&"retrieve": SubResource("Animation_da6we"),
+&"save": SubResource("Animation_o6b2r")
+}
+
+[node name="magicGuitar" instance=ExtResource("1_r4bo4")]
+script = ExtResource("2_o6b2r")
+
+[node name="cooldownTimer" parent="." index="0"]
+wait_time = 0.15
+
+[node name="AnimationPlayer" parent="." index="1"]
+libraries = {
+&"": SubResource("AnimationLibrary_amh4i")
+}
+
+[node name="Sprite3D" parent="." index="2"]
+transform = Transform3D(-0.258816, 0.965927, -2.53518e-06, 0.965927, 0.258816, 2.38498e-08, 6.79183e-07, -2.44263e-06, -1, 0, 0, 0)
+texture = ExtResource("2_da6we")
+hframes = 2
+frame = 1
+
+[node name="Sprite3D2" type="Sprite3D" parent="Sprite3D" index="0"]
+transform = Transform3D(1, 1.42203e-16, 0, 1.42203e-16, 1, 0, -1.77636e-15, -4.44089e-16, 1, 0, 0, -0.001)
+texture_filter = 0
+texture = ExtResource("2_da6we")
+hframes = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." index="5"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" index="0"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(320, 180)
+render_target_update_mode = 4
+
+[node name="musicRaycast" type="RayCast3D" parent="." index="6"]
+unique_name_in_owner = true
+target_position = Vector3(0, 0, -2)
+hit_from_inside = true
+
+[node name="Control" type="MarginContainer" parent="." index="7"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 2
+size_flags_vertical = 2
+theme_override_constants/margin_top = 64
+
+[node name="strumArrowContainer" type="HBoxContainer" parent="Control" index="0"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="equippedMarkerPosition" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.07, -0.145)

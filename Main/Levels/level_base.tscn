@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://boafjv07533ld"]
+[gd_scene load_steps=10 format=3 uid="uid://boafjv07533ld"]
 
 [ext_resource type="PackedScene" uid="uid://c5cweqqdwboqj" path="res://Main/Player/Player.tscn" id="1_fsnrs"]
-[ext_resource type="Script" path="res://Main/Levels/level_base.gd" id="1_g3jy6"]
-[ext_resource type="MeshLibrary" uid="uid://d2o2eks8m65m5" path="res://dungeon_gridmap.tres" id="2_sl4yv"]
-[ext_resource type="MeshLibrary" uid="uid://by1b20yc5rh02" path="res://dungeon_scenes_gridmap.tres" id="3_lqxjl"]
-[ext_resource type="AudioStream" uid="uid://c6xj4g6snv52o" path="res://Assets/SFX/crickets.wav" id="4_kqoml"]
+[ext_resource type="Script" uid="uid://4601usrf0vb" path="res://Main/Levels/level_base.gd" id="1_g3jy6"]
+[ext_resource type="MeshLibrary" uid="uid://d2o2eks8m65m5" path="res://Gridmaps/level_gridmap.tres" id="2_sl4yv"]
+[ext_resource type="MeshLibrary" uid="uid://by1b20yc5rh02" path="res://Gridmaps/scenes_gridmap.tres" id="3_lqxjl"]
+[ext_resource type="MeshLibrary" uid="uid://c503kw4ei2rgd" path="res://Gridmaps/floors_gridmap.tres" id="4_7u1h2"]
+[ext_resource type="Script" uid="uid://ir6qjifu2ier" path="res://Gridmaps/floor_grid_map.gd" id="5_krb8i"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_voh8m"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -28,18 +29,6 @@ script = ExtResource("1_g3jy6")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.7, 1)
 
-[node name="weaponSprite" parent="Warrior" index="6"]
-transform = Transform3D(0.0233537, 0.00960688, -0.999672, 0.29527, 0.955279, 0.0160779, 0.955129, -0.295551, 0.0194724, 0.134, -0.02, -0.171)
-
-[node name="FluteSprite" parent="Warrior" index="7"]
-transform = Transform3D(1, 0, 0, 0, 0.996195, -0.0871556, 0, 0.0871556, 0.996195, 0, -0.1, -0.174)
-
-[node name="enemyMarker" parent="Warrior" index="10"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-
-[node name="VFXNodes" type="Node3D" parent="."]
-unique_name_in_owner = true
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
@@ -54,18 +43,22 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 mesh_library = ExtResource("2_sl4yv")
 data = {
-"cells": PackedInt32Array(0, 0, 1, 2, 0, 0, 2, 1, 0, 2, 2, 0, 1, 2, 0, 0, 2, 0, 65535, 2, 0, 65534, 2, 0, 65534, 1, 0, 65534, 0, 0, 65534, 65535, 0, 65534, 65534, 0, 65535, 65534, 0, 2, 65535, 0, 2, 65534, 0, 1, 65534, 0, 65535, 65533, 0, 65535, 65532, 0, 1, 65533, 0, 1, 65532, 0, 65535, 1, 1048576, 65535, 0, 1, 65535, 65535, 0, 0, 65535, 1, 1, 65535, 0, 1, 0, 1, 1, 1, 1048576, 0, 1, 1, 0, 65532, 1, 0, 65533, 1, 0, 65534, 1, 131070, 65534, 0, 131070, 65535, 0, 131070, 0, 0, 131070, 1, 0, 131070, 2, 0, 131071, 65534, 0, 65537, 65534, 0, 65538, 65534, 0, 65538, 65535, 0, 65538, 0, 0, 65538, 1, 0, 65538, 2, 0, 65537, 2, 0, 65536, 2, 0, 131071, 2, 0, 131071, 1, 0, 131071, 0, 0, 131071, 65535, 0, 65536, 65534, 0, 65537, 65535, 0, 65537, 0, 0, 65537, 1, 0, 65536, 1, 0, 65536, 0, 0, 65536, 65535, 0, 196606, 65534, 0, 196606, 2, 0, 131074, 2, 0, 131074, 65534, 0, 65536, 65533, 0, 65536, 65532, 0, 65535, 65531, 0, 1, 65531, 1048576, 1, 65530, 1048576, 1, 65529, 1048576, 1, 65528, 1048576, 65535, 65530, 1048576, 65535, 65529, 1048576, 65535, 65528, 1048576, 0, 65531, 1048579, 0, 65530, 1048579, 0, 65529, 1048579, 0, 65528, 1048579, 0, 65527, 1048578, 65535, 65527, 1048578, 65534, 65527, 1048578, 65531, 65527, 1048578, 65530, 65527, 1048578, 65529, 65527, 1048578, 65534, 65528, 1048576, 65533, 65528, 1048576, 65531, 65528, 1048576, 65530, 65528, 1048576, 65529, 65528, 1048576, 65532, 65528, 1048576, 1, 65526, 1048576, 0, 65526, 1048576, 65535, 65526, 1048576, 65534, 65526, 1048576, 65533, 65526, 1048576, 65532, 65526, 1048576, 65531, 65526, 1048576, 65530, 65526, 1048576, 1, 65527, 1048576, 65533, 65527, 1048578, 65532, 65527, 1048578)
+"cells": PackedInt32Array(65529, 65526, 4, 65529, 65528, 4, 65530, 65528, 4, 65531, 65528, 4, 65533, 65528, 4, 0, 65528, 1048579)
 }
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="floorGridMap" type="GridMap" parent="."]
+unique_name_in_owner = true
+mesh_library = ExtResource("4_7u1h2")
+script = ExtResource("5_krb8i")
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="ScenesGridMap" type="GridMap" parent="."]
 unique_name_in_owner = true
 mesh_library = ExtResource("3_lqxjl")
 
-[node name="Fireflies" type="AudioStreamPlayer3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -9)
-stream = ExtResource("4_kqoml")
-autoplay = true
-max_distance = 3.0
+[node name="SFXNode" type="Node3D" parent="."]
+unique_name_in_owner = true
 
-[editable path="Warrior"]
+[node name="Scenes" type="Node3D" parent="."]
+unique_name_in_owner = true

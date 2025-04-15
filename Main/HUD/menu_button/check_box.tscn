@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ysdt53dxauq2"]
+
+[ext_resource type="Theme" uid="uid://cfmgf0quvx1bf" path="res://Assets/theme/custom_theme.tres" id="1_rxakt"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_hchjc"]
+
+[node name="CheckBox1" type="CheckBox"]
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme = ExtResource("1_rxakt")
+button_mask = 0
+button_group = SubResource("ButtonGroup_hchjc")
+shortcut_feedback = false
+shortcut_in_tooltip = false

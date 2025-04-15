@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7ssjlpdmob4j"]
+
+[ext_resource type="Script" uid="uid://ign7t3mwol75" path="res://Main/HUD/menu_button/menu_button.gd" id="1_vv01e"]
+[ext_resource type="AudioStream" uid="uid://8qbyaarxu8p4" path="res://Assets/SFX/HUD/hud_click.wav" id="2_fp4ia"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c6ey1"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="menuButtonBase" type="MarginContainer"]
+custom_minimum_size = Vector2(632, 48)
+offset_right = 632.0
+offset_bottom = 48.0
+pivot_offset = Vector2(0, 24)
+size_flags_horizontal = 4
+size_flags_vertical = 0
+mouse_filter = 0
+script = ExtResource("1_vv01e")
+
+[node name="menuButton" type="Button" parent="."]
+custom_minimum_size = Vector2(632, 48)
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/pressed = SubResource("StyleBoxFlat_c6ey1")
+metadata/_edit_vertical_guides_ = [320.0]
+
+[node name="contentMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="contentMargin"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="contentMargin/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="clickSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_fp4ia")
+
+[connection signal="focus_entered" from="menuButton" to="." method="_on_menu_button_focus_entered"]
+[connection signal="pressed" from="menuButton" to="." method="_on_menu_button_pressed"]

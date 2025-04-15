@@ -1,0 +1,12 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cfmgf0quvx1bf"]
+
+[ext_resource type="Texture2D" uid="uid://dawuii1x3abv3" path="res://Assets/HUD/CheckBoxCustom/custom_checkmark_pressed.png" id="1_26c2c"]
+[ext_resource type="Texture2D" uid="uid://bgmojba5tq7b3" path="res://Assets/HUD/CheckBoxCustom/circle_checkmark_pressed.png" id="2_w7e0g"]
+[ext_resource type="Texture2D" uid="uid://byb8rlmqykxil" path="res://Assets/HUD/CheckBoxCustom/circle_checkmark.png" id="3_6kknf"]
+[ext_resource type="Texture2D" uid="uid://btu2syll13luh" path="res://Assets/HUD/CheckBoxCustom/custom_checkmark.png" id="4_aycbc"]
+
+[resource]
+CheckBox/icons/checked = ExtResource("1_26c2c")
+CheckBox/icons/radio_checked = ExtResource("2_w7e0g")
+CheckBox/icons/radio_unchecked = ExtResource("3_6kknf")
+CheckBox/icons/unchecked = ExtResource("4_aycbc")

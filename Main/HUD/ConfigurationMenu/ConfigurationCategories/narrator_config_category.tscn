@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0wjtof1l0rdd"]
+
+[ext_resource type="PackedScene" uid="uid://c641bnuftvrx1" path="res://Main/HUD/ConfigurationMenu/ConfigurationCategories/configurationCategoryBase.tscn" id="1_vjdw7"]
+[ext_resource type="PackedScene" uid="uid://cc1cr00xo1h6t" path="res://Main/HUD/menu_button/option_buttons/menu_button_option.tscn" id="2_ju8is"]
+[ext_resource type="PackedScene" uid="uid://bc1a6lahvt80r" path="res://Main/HUD/menu_button/menu_button_check.tscn" id="2_nxp5s"]
+[ext_resource type="PackedScene" uid="uid://bd6ta3p2o4b3r" path="res://Main/HUD/menu_button/option_buttons/menu_button_volume.tscn" id="3_ju8is"]
+
+[node name="narratorConfiguration" instance=ExtResource("1_vjdw7")]
+custom_minimum_size = Vector2(640, 0)
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 640.0
+offset_bottom = 351.0
+grow_horizontal = 1
+grow_vertical = 1
+size_flags_horizontal = 0
+size_flags_vertical = 0
+category_name = "Narrador"
+first_button = NodePath("ScrollContainer/VBoxContainer/checkButton")
+
+[node name="checkButton" parent="ScrollContainer/buttonContainer" index="0" instance=ExtResource("2_nxp5s")]
+layout_mode = 2
+
+[node name="menuButtonVolume" parent="ScrollContainer/buttonContainer" index="1" instance=ExtResource("3_ju8is")]
+layout_mode = 2
+selected_audio_channel = "Narrator"
+button_text = "Volumen narrador"
+
+[node name="menuButtonOptionBase" parent="ScrollContainer/buttonContainer" index="2" instance=ExtResource("2_ju8is")]
+layout_mode = 2
+options_array = Array[String](["Muy grave", "Grave", "Normal", "Agudo", "Muy agudo"])
+global_var_reference = "narrator_pitch_scale"
+button_text = "Tono de narración"
+
+[node name="menuButtonOptionBase2" parent="ScrollContainer/buttonContainer" index="3" instance=ExtResource("2_ju8is")]
+layout_mode = 2
+options_array = Array[String](["Muy lento", "Lento", "Normal", "Rápido", "Muy rápido"])
+global_var_reference = "narrator_rate_speed"
+button_text = "Velocidad de narración"
